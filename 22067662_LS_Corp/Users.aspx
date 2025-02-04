@@ -39,6 +39,30 @@
                 <asp:Parameter Name="USER_ID" Type="Decimal" />
             </UpdateParameters>
         </asp:SqlDataSource>
+        <asp:FormView ID="FormView1" runat="server" DataKeyNames="USER_ID" DataSourceID="SqlDataSource1">
+            <InsertItemTemplate>
+                USER_ID:
+                <asp:TextBox ID="USER_IDTextBox" runat="server" Text='<%# Bind("USER_ID") %>' />
+                <br />
+                USER_NAME:
+                <asp:TextBox ID="USER_NAMETextBox" runat="server" Text='<%# Bind("USER_NAME") %>' />
+                <br />
+                USER_EMAIL:
+                <asp:TextBox ID="USER_EMAILTextBox" runat="server" Text='<%# Bind("USER_EMAIL") %>' />
+                <br />
+                USER_CONTACT:
+                <asp:TextBox ID="USER_CONTACTTextBox" runat="server" Text='<%# Bind("USER_CONTACT") %>' />
+                <br />
+                USER_POSITION:
+                <asp:TextBox ID="USER_POSITIONTextBox" runat="server" Text='<%# Bind("USER_POSITION") %>' />
+                <br />
+                <asp:LinkButton ID="InsertButton" runat="server" CausesValidation="True" CommandName="Insert" Text="Insert" />
+                &nbsp;<asp:LinkButton ID="InsertCancelButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" />
+            </InsertItemTemplate>
+            <ItemTemplate>
+                <asp:LinkButton ID="NewButton" runat="server" CausesValidation="False" CommandName="New" Text="Insert" />
+            </ItemTemplate>
+        </asp:FormView>
     </form>
 </body>
 </html>
