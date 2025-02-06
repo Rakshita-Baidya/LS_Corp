@@ -70,6 +70,7 @@
     <Content Include="Milestones.aspx" />
     <Content Include="Projects.aspx" />
     <Content Include="Resources.aspx" />
+    <Content Include="SubTasks.aspx" />
     <Content Include="Tasks.aspx" />
     <Content Include="Users.aspx" />
     <Content Include="Web.config" />
@@ -96,6 +97,13 @@
     </Compile>
     <Compile Include="Resources.aspx.designer.cs">
       <DependentUpon>Resources.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SubTasks.aspx.cs">
+      <DependentUpon>SubTasks.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SubTasks.aspx.designer.cs">
+      <DependentUpon>SubTasks.aspx</DependentUpon>
     </Compile>
     <Compile Include="Tasks.aspx.cs">
       <DependentUpon>Tasks.aspx</DependentUpon>
