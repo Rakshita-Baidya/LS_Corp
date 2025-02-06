@@ -73,6 +73,7 @@
     <Content Include="Resources.aspx" />
     <Content Include="SubTasks.aspx" />
     <Content Include="Tasks.aspx" />
+    <Content Include="TopPerformer.aspx" />
     <Content Include="Users.aspx" />
     <Content Include="User_Project.aspx" />
     <Content Include="User_Project_Task.aspx" />
@@ -121,6 +122,13 @@
     </Compile>
     <Compile Include="Tasks.aspx.designer.cs">
       <DependentUpon>Tasks.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TopPerformer.aspx.cs">
+      <DependentUpon>TopPerformer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TopPerformer.aspx.designer.cs">
+      <DependentUpon>TopPerformer.aspx</DependentUpon>
     </Compile>
     <Compile Include="Users.aspx.cs">
       <DependentUpon>Users.aspx</DependentUpon>
