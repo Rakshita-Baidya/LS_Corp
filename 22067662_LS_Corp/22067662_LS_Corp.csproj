@@ -67,6 +67,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Comments.aspx" />
     <Content Include="Milestones.aspx" />
     <Content Include="Projects.aspx" />
     <Content Include="Resources.aspx" />
@@ -76,6 +77,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Comments.aspx.cs">
+      <DependentUpon>Comments.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Comments.aspx.designer.cs">
+      <DependentUpon>Comments.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Milestones.aspx.cs">
       <DependentUpon>Milestones.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
