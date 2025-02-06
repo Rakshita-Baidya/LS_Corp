@@ -75,6 +75,7 @@
     <Content Include="Tasks.aspx" />
     <Content Include="Users.aspx" />
     <Content Include="User_Project.aspx" />
+    <Content Include="User_Project_Task.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -134,6 +135,13 @@
     </Compile>
     <Compile Include="User_Project.aspx.designer.cs">
       <DependentUpon>User_Project.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="User_Project_Task.aspx.cs">
+      <DependentUpon>User_Project_Task.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="User_Project_Task.aspx.designer.cs">
+      <DependentUpon>User_Project_Task.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
