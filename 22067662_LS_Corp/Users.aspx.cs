@@ -18,5 +18,10 @@ namespace _22067662_LS_Corp
         {
 
         }
+
+        protected void Unnamed1_MenuItemClick(object sender, MenuEventArgs e)
+        {
+
+        }
     }
 }

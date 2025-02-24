@@ -13,5 +13,10 @@ namespace _22067662_LS_Corp
         {
 
         }
+
+        protected void SqlDataSource1_Selecting(object sender, SqlDataSourceSelectingEventArgs e)
+        {
+
+        }
     }
 }
