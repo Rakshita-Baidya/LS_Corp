@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="TopPerformer.aspx.cs" Inherits="_22067662_LS_Corp.TopPerformer" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="_22067662_LS_Corp.TopPerformer" %>
 
 <!DOCTYPE html>
 
@@ -24,12 +24,13 @@
         <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT u.USER_ID, u.USER_NAME, u.USER_POSITION, 
         COUNT(t.TASK_ID) AS COMPLETED_TASKS,
         RANK() OVER (ORDER BY COUNT(t.TASK_ID) DESC) AS USER_rank
-    FROM USERS u
-    JOIN USER_PROJECT_TASK upt ON u.USER_ID = upt.USER_ID
-    JOIN TASKS t ON upt.TASK_ID = t.TASK_ID
-    WHERE t.Task_STATUS = 'Completed'
-    GROUP BY u.USER_ID, u.USER_NAME, u.USER_POSITION
-    ORDER BY COMPLETED_TASKS DESC"></asp:SqlDataSource>
+        FROM USERS u
+        JOIN USER_PROJECT_TASK upt ON u.USER_ID = upt.USER_ID
+        JOIN TASKS t ON upt.TASK_ID = t.TASK_ID
+        WHERE t.Task_STATUS = 'Completed'
+        GROUP BY u.USER_ID, u.USER_NAME, u.USER_POSITION
+        ORDER BY COMPLETED_TASKS DESC
+        FETCH FIRST 3 ROWS ONLY"></asp:SqlDataSource>
         <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT &quot;USER_ID&quot;, &quot;USER_NAME&quot; FROM &quot;USERS&quot;"></asp:SqlDataSource>
     </form>
 </body>
