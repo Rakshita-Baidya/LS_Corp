@@ -68,6 +68,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Comments.aspx" />
+    <Content Include="Images\next.svg" />
+    <Content Include="Images\prev.svg" />
     <Content Include="Milestones.aspx" />
     <Content Include="Projects.aspx" />
     <Content Include="Resources.aspx" />

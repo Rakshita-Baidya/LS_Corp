@@ -5,7 +5,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Top Performer</title>
-
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
 </head>
 <body class="bg-gray-50">
@@ -33,14 +32,17 @@
             <div class="ml-52 p-8 flex-1">
                 <div class="bg-white p-6 mb-8 rounded-lg border-2 border-[#6B1F29] shadow-lg">
                     <h2 class="mb-6 text-2xl font-bold text-[#6B1F29]">Dashboard</h2>
-
-                    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="USER_ID" DataSourceID="SqlDataSource2">
+                    <h2 class="mb-6 text-xl font-semibold text-[#6B1F29] underline">Top Performers</h2>
+                    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="USER_ID" DataSourceID="SqlDataSource2" CssClass="divide-gray-200 min-w-full divide-y text-center"
+                        HeaderStyle-CssClass="bg-[#F5E6E8] text-lg"
+                        RowStyle-CssClass="bg-white text-md text-gray-900 hover:bg-gray-50"
+                        AlternatingRowStyle-CssClass="bg-gray-50 hover:bg-gray-100">
                         <Columns>
-                            <asp:BoundField DataField="USER_ID" HeaderText="USER_ID" ReadOnly="True" SortExpression="USER_ID" />
-                            <asp:BoundField DataField="USER_NAME" HeaderText="USER_NAME" SortExpression="USER_NAME" />
-                            <asp:BoundField DataField="USER_POSITION" HeaderText="USER_POSITION" SortExpression="USER_POSITION" />
-                            <asp:BoundField DataField="COMPLETED_TASKS" HeaderText="COMPLETED_TASKS" SortExpression="COMPLETED_TASKS" />
-                            <asp:BoundField DataField="USER_RANK" HeaderText="USER_RANK" SortExpression="USER_RANK" />
+                            <asp:BoundField DataField="USER_ID" HeaderText="USER_ID" ReadOnly="True" SortExpression="USER_ID" ItemStyle-CssClass="px-6 py-4"/>
+                            <asp:BoundField DataField="USER_NAME" HeaderText="USER_NAME" SortExpression="USER_NAME" ItemStyle-CssClass="px-6 py-4"/>
+                            <asp:BoundField DataField="USER_POSITION" HeaderText="USER_POSITION" SortExpression="USER_POSITION" ItemStyle-CssClass="px-6 py-4"/>
+                            <asp:BoundField DataField="COMPLETED_TASKS" HeaderText="COMPLETED_TASKS" SortExpression="COMPLETED_TASKS" ItemStyle-CssClass="px-6 py-4"/>
+                            <asp:BoundField DataField="USER_RANK" HeaderText="USER_RANK" SortExpression="USER_RANK" ItemStyle-CssClass="px-6 py-4"/>
                         </Columns>
                     </asp:GridView>
                 </div>

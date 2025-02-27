@@ -74,7 +74,17 @@
                         CssClass="divide-gray-200 min-w-full divide-y text-center"
                         HeaderStyle-CssClass="bg-[#F5E6E8] text-lg"
                         RowStyle-CssClass="bg-white text-md text-gray-900 hover:bg-gray-50"
-                        AlternatingRowStyle-CssClass="bg-gray-50 hover:bg-gray-100">
+                        AlternatingRowStyle-CssClass="bg-gray-50 hover:bg-gray-100" AllowPaging="True" AllowSorting="True"
+                        PageSize="5">
+
+                        <PagerSettings Mode="NextPrevious"
+                            PreviousPageImageUrl="~/Images/prev.svg"
+                            PreviousPageText="Prev"
+                            NextPageImageUrl="~/Images/next.svg"
+                            NextPageText="Next"
+                            PageButtonCount="4" />
+                        <PagerStyle HorizontalAlign="Center" CssClass="mt-4 text-2xl font-semibold text-[#8E2937]" />
+
                         <Columns>
                             <asp:BoundField DataField="USER_ID" HeaderText="ID" ReadOnly="True" SortExpression="USER_ID" ItemStyle-CssClass="px-6 py-4" />
                             <asp:BoundField DataField="USER_NAME" HeaderText="Name" SortExpression="USER_NAME" ItemStyle-CssClass="px-6 py-4" />
