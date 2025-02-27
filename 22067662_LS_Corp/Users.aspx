@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Users</title>
+    <title>Users List</title>
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
 </head>
 <body class="bg-gray-50">
@@ -24,7 +24,9 @@
                         <asp:MenuItem NavigateUrl="/Default.aspx" Text="Dashboard" Value="Default"></asp:MenuItem>
                         <asp:MenuItem NavigateUrl="/Users.aspx" Text="Users" Value="Users"></asp:MenuItem>
                         <asp:MenuItem NavigateUrl="/Projects.aspx" Text="Projects" Value="Projects"></asp:MenuItem>
+                        <asp:MenuItem NavigateUrl="/Milestones.aspx" Text="Milestones" Value="Milestones"></asp:MenuItem>
                         <asp:MenuItem NavigateUrl="/Tasks.aspx" Text="Tasks" Value="Tasks"></asp:MenuItem>
+                        <asp:MenuItem NavigateUrl="/SubTasks.aspx" Text="SubTasks" Value="SubTasks"></asp:MenuItem>
                         <asp:MenuItem NavigateUrl="/Resources.aspx" Text="Resources" Value="Resources"></asp:MenuItem>
                         <asp:MenuItem NavigateUrl="/Comments.aspx" Text="Comments" Value="Comments"></asp:MenuItem>
                     </Items>

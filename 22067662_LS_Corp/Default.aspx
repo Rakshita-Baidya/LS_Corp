@@ -21,8 +21,10 @@
                     <Items>
                         <asp:MenuItem NavigateUrl="/Default.aspx" Text="Dashboard" Value="Default"></asp:MenuItem>
                         <asp:MenuItem NavigateUrl="/Users.aspx" Text="Users" Value="Users"></asp:MenuItem>
-                        <asp:MenuItem NavigateUrl="/Projects.aspx" Text="Projects" Value="Projects"></asp:MenuItem>
+                        <asp:MenuItem NavigateUrl="/Projects.aspx" Text="Projects" Value="Projects"></asp:MenuItem>                        
+                        <asp:MenuItem NavigateUrl="/Milestones.aspx" Text="Milestones" Value="Milestones"></asp:MenuItem>
                         <asp:MenuItem NavigateUrl="/Tasks.aspx" Text="Tasks" Value="Tasks"></asp:MenuItem>
+                        <asp:MenuItem NavigateUrl="/SubTasks.aspx" Text="SubTasks" Value="SubTasks"></asp:MenuItem>
                         <asp:MenuItem NavigateUrl="/Resources.aspx" Text="Resources" Value="Resources"></asp:MenuItem>
                         <asp:MenuItem NavigateUrl="/Comments.aspx" Text="Comments" Value="Comments"></asp:MenuItem>
                     </Items>
@@ -38,11 +40,11 @@
                         RowStyle-CssClass="bg-white text-md text-gray-900 hover:bg-gray-50"
                         AlternatingRowStyle-CssClass="bg-gray-50 hover:bg-gray-100">
                         <Columns>
-                            <asp:BoundField DataField="USER_ID" HeaderText="USER_ID" ReadOnly="True" SortExpression="USER_ID" ItemStyle-CssClass="px-6 py-4"/>
-                            <asp:BoundField DataField="USER_NAME" HeaderText="USER_NAME" SortExpression="USER_NAME" ItemStyle-CssClass="px-6 py-4"/>
-                            <asp:BoundField DataField="USER_POSITION" HeaderText="USER_POSITION" SortExpression="USER_POSITION" ItemStyle-CssClass="px-6 py-4"/>
-                            <asp:BoundField DataField="COMPLETED_TASKS" HeaderText="COMPLETED_TASKS" SortExpression="COMPLETED_TASKS" ItemStyle-CssClass="px-6 py-4"/>
-                            <asp:BoundField DataField="USER_RANK" HeaderText="USER_RANK" SortExpression="USER_RANK" ItemStyle-CssClass="px-6 py-4"/>
+                            <asp:BoundField DataField="USER_ID" HeaderText="USER_ID" ReadOnly="True" SortExpression="USER_ID" ItemStyle-CssClass="px-6 py-4" />
+                            <asp:BoundField DataField="USER_NAME" HeaderText="USER_NAME" SortExpression="USER_NAME" ItemStyle-CssClass="px-6 py-4" />
+                            <asp:BoundField DataField="USER_POSITION" HeaderText="USER_POSITION" SortExpression="USER_POSITION" ItemStyle-CssClass="px-6 py-4" />
+                            <asp:BoundField DataField="COMPLETED_TASKS" HeaderText="COMPLETED_TASKS" SortExpression="COMPLETED_TASKS" ItemStyle-CssClass="px-6 py-4" />
+                            <asp:BoundField DataField="USER_RANK" HeaderText="USER_RANK" SortExpression="USER_RANK" ItemStyle-CssClass="px-6 py-4" />
                         </Columns>
                     </asp:GridView>
                 </div>
