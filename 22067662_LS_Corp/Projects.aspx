@@ -8,27 +8,27 @@
         <InsertItemTemplate>
             <div class="gap-4 p-6 grid grid-cols-1 rounded border-2 border-[#6B1F29]">
                 <div class="space-y-2">
-                    <label class="text-gray-700 block text-sm font-medium">ID:</label>
+                    <label class="text-gray-700 block text-sm font-medium">Project ID:</label>
                     <asp:TextBox ID="PROJECT_IDTextBox" runat="server" Text='<%# Bind("PROJECT_ID") %>' CssClass="w-full rounded-sm py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
                 </div>
                 <div class="space-y-2">
                     <label class="text-gray-700 block text-sm font-medium">
-                        NAME:</label>
+                        Name:</label>
                     <asp:TextBox ID="PROJECT_NAMETextBox" runat="server" Text='<%# Bind("PROJECT_NAME") %>' CssClass="w-full rounded-sm py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
                 </div>
                 <div class="space-y-2">
                     <label class="text-gray-700 block text-sm font-medium">
-                        START DATE:</label>
+                        Start Date:</label>
                     <asp:TextBox ID="PROJECT_START_DATETextBox" runat="server" TextMode="Date" Text='<%# Bind("PROJECT_START_DATE") %>' CssClass="w-full rounded-sm py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
                 </div>
                 <div class="space-y-2">
                     <label class="text-gray-700 block text-sm font-medium">
-                        DUE DATE:</label>
+                        Due Date:</label>
                     <asp:TextBox ID="PROJECT_DUE_DATETextBox" runat="server" TextMode="Date" Text='<%# Bind("PROJECT_DUE_DATE") %>' CssClass="w-full rounded-sm py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
                 </div>
                 <div class="space-y-2">
                     <label class="text-gray-700 block text-sm font-medium">
-                        STATUS:</label>
+                        Status:</label>
                     <asp:TextBox ID="PROJECT_STATUSTextBox" runat="server" Text='<%# Bind("PROJECT_STATUS") %>' CssClass="w-full rounded-sm py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
                 </div>
                 <div class="space-x-4 pt-4 flex">
