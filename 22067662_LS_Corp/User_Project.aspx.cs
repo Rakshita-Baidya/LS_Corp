@@ -12,10 +12,5 @@ namespace _22067662_LS_Corp
         {
 
         }
-
-        protected void GridView1_SelectedIndexChanged1(object sender, EventArgs e)
-        {
-
-        }
     }
 }
