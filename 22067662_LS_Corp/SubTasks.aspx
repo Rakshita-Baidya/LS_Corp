@@ -104,7 +104,7 @@
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Task Name">
                     <ItemTemplate>
-                        <asp:DropDownList ID="DropDownListTaskName" runat="server" DataSourceID="SqlDataSource2" DataTextField="TASK_NAME" DataValueField="TASK_ID" SelectedValue='<%# Eval("TASK_ID") %>' Enabled="False" CssClass="px-6 py-4 text-center text-[#000000] bg-transparent appearance-none" />
+                        <asp:DropDownList ID="DropDownListTaskName" runat="server" DataSourceID="SqlDataSource2" DataTextField="TASK_NAME" DataValueField="TASK_ID" SelectedValue='<%# Eval("TASK_ID") %>' Enabled="False" CssClass="px-6 py-4 max-w-40 text-center text-[#000000] bg-transparent appearance-none" />
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:CommandField HeaderText="Actions" ShowDeleteButton="True" ShowEditButton="True"

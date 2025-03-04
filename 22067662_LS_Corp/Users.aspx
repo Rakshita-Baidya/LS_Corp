@@ -40,7 +40,7 @@
     </asp:FormView>
 
     <div class="p-6 mb-8 rounded-lg border-2 border-[#6B1F29] shadow-lg">
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="USER_ID" DataSourceID="SqlDataSource1" CssClass="divide-gray-200 min-w-full divide-y truncate text-center"
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="USER_ID" DataSourceID="SqlDataSource1" CssClass="divide-gray-200 min-w-full divide-y text-center"
             HeaderStyle-CssClass="bg-[#F5E6E8] text-lg"
             RowStyle-CssClass="bg-white text-md text-gray-900 hover:bg-gray-50"
             AlternatingRowStyle-CssClass="bg-gray-50 hover:bg-gray-100" AllowPaging="True" AllowSorting="True"
@@ -55,11 +55,38 @@
 
             <Columns>
                 <asp:BoundField DataField="USER_ID" HeaderText="ID" ReadOnly="True" SortExpression="USER_ID" ItemStyle-CssClass="px-6 py-4" />
-                <asp:BoundField DataField="USER_NAME" HeaderText="Name" SortExpression="USER_NAME" ItemStyle-CssClass="px-6 py-4" />
-                <asp:BoundField DataField="USER_EMAIL" HeaderText="Email" SortExpression="USER_EMAIL" ItemStyle-CssClass="px-6 py-4" />
-                <asp:BoundField DataField="USER_CONTACT" HeaderText="Contact" SortExpression="USER_CONTACT" ItemStyle-CssClass="px-6 py-4" />
-                <asp:BoundField DataField="USER_POSITION" HeaderText="Position" SortExpression="USER_POSITION" ItemStyle-CssClass="px-6 py-4" />
-                <asp:CommandField HeaderText="Actions" ShowDeleteButton="True" ShowEditButton="True"
+               <asp:TemplateField HeaderText="Name" SortExpression="USER_NAME" ItemStyle-CssClass="px-6 py-4 max-w-xs truncate">
+                <ItemTemplate>
+                    <asp:Label ID="LabelName" runat="server" Text='<%# Eval("USER_NAME") %>' />
+                </ItemTemplate>
+                <EditItemTemplate>
+                    <asp:TextBox ID="TextBoxName" runat="server" Text='<%# Bind("USER_NAME") %>' CssClass="w-full rounded-sm py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
+                </EditItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Email" SortExpression="USER_EMAIL" ItemStyle-CssClass="px-6 py-4 max-w-md truncate">
+                <ItemTemplate>
+                    <asp:Label ID="LabelEmail" runat="server" Text='<%# Eval("USER_EMAIL") %>' />
+                </ItemTemplate>
+                <EditItemTemplate>
+                    <asp:TextBox ID="TextBoxEmail" runat="server" TextMode="Email" Text='<%# Bind("USER_EMAIL") %>' CssClass="w-full rounded-sm py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
+                </EditItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Contact" SortExpression="USER_CONTACT" ItemStyle-CssClass="px-6 py-4 max-w-xs truncate">
+                <ItemTemplate>
+                    <asp:Label ID="LabelContact" runat="server" Text='<%# Eval("USER_CONTACT") %>' />
+                </ItemTemplate>
+                <EditItemTemplate>
+                    <asp:TextBox ID="TextBoxContact" runat="server" Text='<%# Bind("USER_CONTACT") %>' CssClass="w-full rounded-sm py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
+                </EditItemTemplate>
+            </asp:TemplateField>
+            <asp:TemplateField HeaderText="Position" SortExpression="USER_POSITION" ItemStyle-CssClass="px-6 py-4 max-w-xs truncate">
+                <ItemTemplate>
+                    <asp:Label ID="LabelPosition" runat="server" Text='<%# Eval("USER_POSITION") %>' />
+                </ItemTemplate>
+                <EditItemTemplate>
+                    <asp:TextBox ID="TextBoxPosition" runat="server" Text='<%# Bind("USER_POSITION") %>' CssClass="w-full rounded-sm py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
+                </EditItemTemplate>
+            </asp:TemplateField> <asp:CommandField HeaderText="Actions" ShowDeleteButton="True" ShowEditButton="True"
                     ButtonType="Link"
                     EditText='<svg fill="#000000" width="25px" height="25px" viewBox="0 0 24 24" id="edit" data-name="Line Color" xmlns="http://www.w3.org/2000/svg" class="icon line-color"><line id="secondary" x1="21" y1="21" x2="3" y2="21" style="fill: none; stroke: rgb(34, 87, 122); stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></line><path id="primary" d="M19.88,7,11,15.83,7,17l1.17-4,8.88-8.88A2.09,2.09,0,0,1,20,4,2.09,2.09,0,0,1,19.88,7Z" style="fill: none; stroke: rgb(34, 87, 122); stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path></svg>'
                     DeleteText='<svg width="25px" height="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7 4a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2h4a1 1 0 1 1 0 2h-1.069l-.867 12.142A2 2 0 0 1 17.069 22H6.93a2 2 0 0 1-1.995-1.858L4.07 8H3a1 1 0 0 1 0-2h4V4zm2 2h6V4H9v2zM6.074 8l.857 12H17.07l.857-12H6.074zM10 10a1 1 0 0 1 1 1v6a1 1 0 1 1-2 0v-6a1 1 0 0 1 1-1zm4 0a1 1 0 0 1 1 1v6a1 1 0 1 1-2 0v-6a1 1 0 0 1 1-1z" fill="#8E2937"/></svg>'

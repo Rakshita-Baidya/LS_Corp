@@ -41,7 +41,7 @@
         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="USER_TASK_RESOURCE_ID" DataSourceID="SqlDataSource1" CssClass="divide-gray-200 min-w-full divide-y truncate text-center"
             HeaderStyle-CssClass="bg-[#F5E6E8] text-lg"
             RowStyle-CssClass="bg-white text-md text-gray-900 hover:bg-gray-50"
-            AlternatingRowStyle-CssClass="bg-gray-50 hover:bg-gray-100" AllowPaging="True" AllowSorting="True" PageSize="7">
+            AlternatingRowStyle-CssClass="bg-gray-50 hover:bg-gray-100" AllowPaging="True" AllowSorting="True" PageSize="6">
             <PagerSettings Mode="NextPrevious"
                 PreviousPageImageUrl="~/Images/prev.svg"
                 PreviousPageText="Prev"

@@ -43,8 +43,8 @@
         </ItemTemplate>
     </asp:FormView>
 
-    <div class="p-6 mb-8 rounded-lg border-2 border-[#6B1F29] shadow-lg">
-        <asp:GridView ID="GridView1" runat="server" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="COMMENT_ID" DataSourceID="SqlDataSource1" CssClass="divide-gray-200 min-w-full divide-y truncate text-center"
+    <div class="p-6 mb-8 overflow-x-auto rounded-lg border-2 border-[#6B1F29] shadow-lg">
+        <asp:GridView ID="GridView1" runat="server" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="COMMENT_ID" DataSourceID="SqlDataSource1" CssClass="divide-gray-200 w-full divide-y truncate text-center"
             HeaderStyle-CssClass="bg-[#F5E6E8] text-lg"
             RowStyle-CssClass="bg-white text-md text-gray-900 hover:bg-gray-50"
             AlternatingRowStyle-CssClass="bg-gray-50 hover:bg-gray-100" AllowPaging="True" PageSize="7">
@@ -57,18 +57,46 @@
             <PagerStyle HorizontalAlign="Center" />
             <Columns>
                 <asp:BoundField DataField="COMMENT_ID" HeaderText="ID" ReadOnly="True" SortExpression="COMMENT_ID" ItemStyle-CssClass="px-6 py-4" />
-                <asp:BoundField DataField="COMMENT_MESSAGE" HeaderText="Message" SortExpression="COMMENT_MESSAGE" ItemStyle-CssClass="px-6 py-4" />
-                <asp:BoundField DataField="COMMENT_DATETIME" HeaderText="Date Time" SortExpression="COMMENT_DATETIME" DataFormatString="{0:dd MMMM, yyyy} at {0:h:mm tt}" ItemStyle-CssClass="px-6 py-4" />
-                <asp:BoundField DataField="TASK_ID" HeaderText="Task ID" SortExpression="TASK_ID" ItemStyle-CssClass="px-6 py-4" />
+                <asp:TemplateField HeaderText="Message" SortExpression="COMMENT_MESSAGE" ItemStyle-CssClass="px-3 py-4 max-w-64 truncate">
+                    <ItemTemplate>
+                        <asp:Label ID="LabelMessage" runat="server" Text='<%# Eval("COMMENT_MESSAGE") %>' />
+                    </ItemTemplate>
+                    <EditItemTemplate>
+                        <asp:TextBox ID="TextBoxMessage" runat="server" Text='<%# Bind("COMMENT_MESSAGE") %>' CssClass="w-full rounded-sm py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
+                    </EditItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Date Time" SortExpression="COMMENT_DATETIME" ItemStyle-CssClass="px-6 py-4 max-w-64 truncate">
+                    <ItemTemplate>
+                        <asp:Label ID="LabelDateTime" runat="server" Text='<%# Eval("COMMENT_DATETIME", "{0:dd MMMM, yyyy h:mm tt}") %>' />
+                    </ItemTemplate>
+                    <EditItemTemplate>
+                        <asp:TextBox ID="TextBoxDateTime" runat="server" TextMode="DateTimeLocal" Text='<%# Bind("COMMENT_DATETIME", "{0:yyyy-MM-ddTHH:mm}") %>' CssClass="w-full rounded-sm py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
+                    </EditItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Task ID" SortExpression="TASK_ID" ItemStyle-CssClass="px-3 py-4 max-w-20">
+                    <ItemTemplate>
+                        <asp:Label ID="LabelTaskID" runat="server" Text='<%# Eval("TASK_ID") %>' />
+                    </ItemTemplate>
+                    <EditItemTemplate>
+                        <asp:DropDownList ID="DropDownListTaskEdit" runat="server" DataSourceID="SqlDataSource2" DataTextField="TASK_NAME" DataValueField="TASK_ID" SelectedValue='<%# Bind("TASK_ID") %>' CssClass="w-full rounded-sm py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
+                    </EditItemTemplate>
+                </asp:TemplateField>
                 <asp:TemplateField HeaderText="Task Name">
                     <ItemTemplate>
-                        <asp:DropDownList ID="DropDownListTaskName" runat="server" DataSourceID="SqlDataSource2" DataTextField="TASK_NAME" DataValueField="TASK_ID" SelectedValue='<%# Eval("TASK_ID") %>' Enabled="False" CssClass="px-6 py-4 text-center text-[#000000] bg-transparent appearance-none" />
+                        <asp:DropDownList ID="DropDownListTaskName" runat="server" DataSourceID="SqlDataSource2" DataTextField="TASK_NAME" DataValueField="TASK_ID" SelectedValue='<%# Eval("TASK_ID") %>' Enabled="False" CssClass="px-6 py-4 text-center text-[#000000] bg-transparent max-w-48 appearance-none truncate" />
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:BoundField DataField="USER_ID" HeaderText="User ID" SortExpression="USER_ID" ItemStyle-CssClass="px-6 py-4" />
+                <asp:TemplateField HeaderText="User ID" SortExpression="USER_ID" ItemStyle-CssClass="px-6 py-4 max-w-28">
+                    <ItemTemplate>
+                        <asp:Label ID="LabelUserID" runat="server" Text='<%# Eval("USER_ID") %>' />
+                    </ItemTemplate>
+                    <EditItemTemplate>
+                        <asp:DropDownList ID="DropDownListUserEdit" runat="server" DataSourceID="SqlDataSource3" DataTextField="USER_NAME" DataValueField="USER_ID" SelectedValue='<%# Bind("USER_ID") %>' CssClass="w-full rounded-sm py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
+                    </EditItemTemplate>
+                </asp:TemplateField>
                 <asp:TemplateField HeaderText="User Name">
                     <ItemTemplate>
-                        <asp:DropDownList ID="DropDownListUserName" runat="server" DataSourceID="SqlDataSource3" DataTextField="USER_NAME" DataValueField="USER_ID" SelectedValue='<%# Eval("USER_ID") %>' Enabled="False" CssClass="px-6 py-4 text-center text-[#000000] bg-transparent appearance-none" />
+                        <asp:DropDownList ID="DropDownListUserName" runat="server" DataSourceID="SqlDataSource3" DataTextField="USER_NAME" DataValueField="USER_ID" SelectedValue='<%# Eval("USER_ID") %>' Enabled="False" CssClass="px-6 py-4 text-center text-[#000000] bg-transparent appearance-none truncate max-w-40" />
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:CommandField HeaderText="Actions" ShowDeleteButton="True" ShowEditButton="True"

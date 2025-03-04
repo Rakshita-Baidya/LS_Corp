@@ -57,10 +57,38 @@
 
             <Columns>
                 <asp:BoundField DataField="PROJECT_ID" HeaderText="ID" ReadOnly="True" SortExpression="PROJECT_ID" ItemStyle-CssClass="px-6 py-4" />
-                <asp:BoundField DataField="PROJECT_NAME" HeaderText="Name" SortExpression="PROJECT_NAME" ItemStyle-CssClass="px-6 py-4" />
-                <asp:BoundField DataField="PROJECT_START_DATE" HeaderText="Start Date" SortExpression="PROJECT_START_DATE" DataFormatString="{0:dd MMMM, yyyy}" ItemStyle-CssClass="px-6 py-4" />
-                <asp:BoundField DataField="PROJECT_DUE_DATE" HeaderText="Due Date" SortExpression="PROJECT_DUE_DATE" DataFormatString="{0:dd MMMM, yyyy}" ItemStyle-CssClass="px-6 py-4" />
-                <asp:BoundField DataField="PROJECT_STATUS" HeaderText="Status" SortExpression="PROJECT_STATUS" ItemStyle-CssClass="px-6 py-4" />
+                <asp:TemplateField HeaderText="Name" SortExpression="PROJECT_NAME" ItemStyle-CssClass="px-6 py-4 max-w-xs truncate">
+                    <ItemTemplate>
+                        <asp:Label ID="LabelName" runat="server" Text='<%# Eval("PROJECT_NAME") %>' />
+                    </ItemTemplate>
+                    <EditItemTemplate>
+                        <asp:TextBox ID="TextBoxName" runat="server" Text='<%# Bind("PROJECT_NAME") %>' CssClass="w-full rounded-sm py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
+                    </EditItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Start Date" SortExpression="PROJECT_START_DATE" ItemStyle-CssClass="px-6 py-4 max-w-max truncate">
+                    <ItemTemplate>
+                        <asp:Label ID="LabelStartDate" runat="server" Text='<%# Eval("PROJECT_START_DATE", "{0:dd MMMM, yyyy}") %>' />
+                    </ItemTemplate>
+                    <EditItemTemplate>
+                        <asp:TextBox ID="TextBoxStartDate" runat="server" TextMode="Date" Text='<%# Bind("PROJECT_START_DATE", "{0:yyyy-MM-dd}") %>' CssClass="w-full rounded-sm py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
+                    </EditItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Due Date" SortExpression="PROJECT_DUE_DATE" ItemStyle-CssClass="px-6 py-4 max-w-max truncate">
+                    <ItemTemplate>
+                        <asp:Label ID="LabelDueDate" runat="server" Text='<%# Eval("PROJECT_DUE_DATE", "{0:dd MMMM, yyyy}") %>' />
+                    </ItemTemplate>
+                    <EditItemTemplate>
+                        <asp:TextBox ID="TextBoxDueDate" runat="server" TextMode="Date" Text='<%# Bind("PROJECT_DUE_DATE", "{0:yyyy-MM-dd}") %>' CssClass="w-full rounded-sm py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
+                    </EditItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Status" SortExpression="PROJECT_STATUS" ItemStyle-CssClass="px-6 py-4 max-w-xs truncate">
+                    <ItemTemplate>
+                        <asp:Label ID="LabelStatus" runat="server" Text='<%# Eval("PROJECT_STATUS") %>' />
+                    </ItemTemplate>
+                    <EditItemTemplate>
+                        <asp:TextBox ID="TextBoxStatus" runat="server" Text='<%# Bind("PROJECT_STATUS") %>' CssClass="w-full rounded-sm py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
+                    </EditItemTemplate>
+                </asp:TemplateField>
                 <asp:CommandField HeaderText="Actions" ShowDeleteButton="True" ShowEditButton="True"
                     ButtonType="Link"
                     EditText='<svg fill="#000000" width="25px" height="25px" viewBox="0 0 24 24" id="edit" data-name="Line Color" xmlns="http://www.w3.org/2000/svg" class="icon line-color"><line id="secondary" x1="21" y1="21" x2="3" y2="21" style="fill: none; stroke: rgb(34, 87, 122); stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></line><path id="primary" d="M19.88,7,11,15.83,7,17l1.17-4,8.88-8.88A2.09,2.09,0,0,1,20,4,2.09,2.09,0,0,1,19.88,7Z" style="fill: none; stroke: rgb(34, 87, 122); stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path></svg>'
