@@ -15,13 +15,14 @@
                     <asp:TextBox ID="SUBTASK_IDTextBox" runat="server" Text='<%# Bind("SUBTASK_ID") %>' CssClass="w-full rounded-sm py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
                 </div>
                 <div class="space-y-2">
-                    <label class="text-gray-700 block text-sm font-medium">Start Date:</label>
-                    <asp:TextBox ID="SUBTASK_START_DATETextBox" runat="server" TextMode="Date" Text='<%# Bind("SUBTASK_START_DATE") %>' CssClass="w-full rounded-sm py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
-                </div>
-                <div class="space-y-2">
                     <label class="text-gray-700 block text-sm font-medium">SubTask Name:</label>
                     <asp:TextBox ID="SUBTASK_NAMETextBox" runat="server" Text='<%# Bind("SUBTASK_NAME") %>' CssClass="w-full rounded-sm py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
                 </div>
+                <div class="space-y-2">
+                    <label class="text-gray-700 block text-sm font-medium">Start Date:</label>
+                    <asp:TextBox ID="SUBTASK_START_DATETextBox" runat="server" TextMode="Date" Text='<%# Bind("SUBTASK_START_DATE") %>' CssClass="w-full rounded-sm py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
+                </div>
+
                 <div class="space-y-2">
                     <label class="text-gray-700 block text-sm font-medium">Due Date:</label>
                     <asp:TextBox ID="SUBTASK_DUE_DATETextBox" runat="server" TextMode="Date" Text='<%# Bind("SUBTASK_DUE_DATE") %>' CssClass="w-full rounded-sm py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
