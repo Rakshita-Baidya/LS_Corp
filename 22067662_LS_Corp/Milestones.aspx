@@ -7,8 +7,6 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <h2 class="mb-8 text-4xl font-bold text-[#6B1F29]">Milestones Management</h2>
 
-
-
     <asp:FormView ID="FormView2" runat="server" DataKeyNames="MILESTONE_ID" DataSourceID="SqlDataSource1" CssClass="mb-8 w-1/2">
         <InsertItemTemplate>
             <div class="gap-4 p-6 grid grid-cols-1 rounded border-2 border-[#6B1F29]">
@@ -21,11 +19,11 @@
                     <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource2" DataTextField="PROJECT_NAME" DataValueField="PROJECT_ID" SelectedValue='<%# Bind("PROJECT_ID") %>' CssClass="w-full rounded-sm py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
                 </div>
                 <div class="space-y-2">
-                    <label class="text-gray-700 block text-sm font-medium">Milestone Name:</label>
+                    <label class="text-gray-700 block text-sm font-medium">Name:</label>
                     <asp:TextBox ID="MILESTONE_NAMETextBox" runat="server" Text='<%# Bind("MILESTONE_NAME") %>' CssClass="w-full rounded-sm py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
                 </div>
                 <div class="space-y-2">
-                    <label class="text-gray-700 block text-sm font-medium">Milestone Date:</label>
+                    <label class="text-gray-700 block text-sm font-medium">Date:</label>
                     <asp:TextBox ID="MILESTONE_DATETextBox" runat="server" TextMode="Date" Text='<%# Bind("MILESTONE_DATE", "{0:yyyy-MM-dd}") %>' CssClass="w-full rounded-sm py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
                 </div>
                 <div class="space-y-2">
@@ -72,14 +70,13 @@
                 <asp:BoundField DataField="MILESTONE_ID" HeaderText="ID" ReadOnly="True" SortExpression="MILESTONE_ID" ItemStyle-CssClass="px-6 py-4">
                     <ItemStyle CssClass="px-6 py-4"></ItemStyle>
                 </asp:BoundField>
-                <asp:TemplateField HeaderText="Project" SortExpression="PROJECT_ID" ItemStyle-CssClass="px-6 py-4">
+                <asp:TemplateField HeaderText="Project ID" SortExpression="PROJECT_ID" ItemStyle-CssClass="px-6 py-4">
                     <ItemTemplate>
                         <asp:Label ID="LabelProject" runat="server" Text='<%# Eval("PROJECT_ID") %>' />
                     </ItemTemplate>
                     <EditItemTemplate>
                         <asp:DropDownList ID="DropDownListProject" runat="server" DataSourceID="SqlDataSource2" DataTextField="PROJECT_NAME" DataValueField="PROJECT_ID" SelectedValue='<%# Bind("PROJECT_ID") %>' CssClass="w-full rounded-sm py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
                     </EditItemTemplate>
-
                     <ItemStyle CssClass="px-6 py-4"></ItemStyle>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Project Name">
@@ -87,7 +84,7 @@
                         <asp:DropDownList ID="DropDownListProjectName" runat="server" DataSourceID="SqlDataSource2" DataTextField="PROJECT_NAME" DataValueField="PROJECT_ID" SelectedValue='<%# Eval("PROJECT_ID") %>' Enabled="False" CssClass="px-6 py-4 text-center text-[#000000] bg-transparent appearance-none" />
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="Milestone Name" SortExpression="MILESTONE_NAME" ItemStyle-CssClass="px-6 py-4">
+                <asp:TemplateField HeaderText="Name" SortExpression="MILESTONE_NAME" ItemStyle-CssClass="px-6 py-4">
                     <ItemTemplate>
                         <asp:Label ID="LabelName" runat="server" Text='<%# Eval("MILESTONE_NAME") %>' />
                     </ItemTemplate>
@@ -97,7 +94,7 @@
 
                     <ItemStyle CssClass="px-6 py-4"></ItemStyle>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="Milestone Date" SortExpression="MILESTONE_DATE" ItemStyle-CssClass="px-6 py-4">
+                <asp:TemplateField HeaderText="Date" SortExpression="MILESTONE_DATE" ItemStyle-CssClass="px-6 py-4">
                     <ItemTemplate>
                         <asp:Label ID="LabelDate" runat="server" Text='<%# Eval("MILESTONE_DATE", "{0:dd MMMM, yyyy}") %>' />
                     </ItemTemplate>

@@ -24,7 +24,7 @@
                     </asp:DropDownList>
                 </div>
                 <div class="space-y-2">
-                    <label class="text-gray-700 block text-sm font-medium">DateTime:</label>
+                    <label class="text-gray-700 block text-sm font-medium">Date Time:</label>
                     <asp:TextBox ID="COMMENT_DATETIMETextBox" TextMode="DateTimeLocal" runat="server" Text='<%# Bind("COMMENT_DATETIME") %>' CssClass="w-full rounded-sm py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
                 </div>
                 <div class="space-y-2">
@@ -58,9 +58,19 @@
             <Columns>
                 <asp:BoundField DataField="COMMENT_ID" HeaderText="ID" ReadOnly="True" SortExpression="COMMENT_ID" ItemStyle-CssClass="px-6 py-4" />
                 <asp:BoundField DataField="COMMENT_MESSAGE" HeaderText="Message" SortExpression="COMMENT_MESSAGE" ItemStyle-CssClass="px-6 py-4" />
-                <asp:BoundField DataField="COMMENT_DATETIME" HeaderText="DateTime" SortExpression="COMMENT_DATETIME" DataFormatString="{0:dd MMMM, yyyy} at {0:h:mm tt}" ItemStyle-CssClass="px-6 py-4" />
+                <asp:BoundField DataField="COMMENT_DATETIME" HeaderText="Date Time" SortExpression="COMMENT_DATETIME" DataFormatString="{0:dd MMMM, yyyy} at {0:h:mm tt}" ItemStyle-CssClass="px-6 py-4" />
                 <asp:BoundField DataField="TASK_ID" HeaderText="Task ID" SortExpression="TASK_ID" ItemStyle-CssClass="px-6 py-4" />
+                <asp:TemplateField HeaderText="Task Name">
+                    <ItemTemplate>
+                        <asp:DropDownList ID="DropDownListTaskName" runat="server" DataSourceID="SqlDataSource2" DataTextField="TASK_NAME" DataValueField="TASK_ID" SelectedValue='<%# Eval("TASK_ID") %>' Enabled="False" CssClass="px-6 py-4 text-center text-[#000000] bg-transparent appearance-none" />
+                    </ItemTemplate>
+                </asp:TemplateField>
                 <asp:BoundField DataField="USER_ID" HeaderText="User ID" SortExpression="USER_ID" ItemStyle-CssClass="px-6 py-4" />
+                <asp:TemplateField HeaderText="User Name">
+                    <ItemTemplate>
+                        <asp:DropDownList ID="DropDownListUserName" runat="server" DataSourceID="SqlDataSource3" DataTextField="USER_NAME" DataValueField="USER_ID" SelectedValue='<%# Eval("USER_ID") %>' Enabled="False" CssClass="px-6 py-4 text-center text-[#000000] bg-transparent appearance-none" />
+                    </ItemTemplate>
+                </asp:TemplateField>
                 <asp:CommandField HeaderText="Actions" ShowDeleteButton="True" ShowEditButton="True"
                     ButtonType="Link"
                     EditText='<svg fill="#000000" width="25px" height="25px" viewBox="0 0 24 24" id="edit" data-name="Line Color" xmlns="http://www.w3.org/2000/svg" class="icon line-color"><line id="secondary" x1="21" y1="21" x2="3" y2="21" style="fill: none; stroke: rgb(34, 87, 122); stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></line><path id="primary" d="M19.88,7,11,15.83,7,17l1.17-4,8.88-8.88A2.09,2.09,0,0,1,20,4,2.09,2.09,0,0,1,19.88,7Z" style="fill: none; stroke: rgb(34, 87, 122); stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path></svg>'
@@ -94,11 +104,9 @@
 
     <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>"
         ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>"
-        SelectCommand="SELECT &quot;TASK_ID&quot;, &quot;TASK_NAME&quot; FROM &quot;TASKS&quot;">
-    </asp:SqlDataSource>
+        SelectCommand="SELECT &quot;TASK_ID&quot;, &quot;TASK_NAME&quot; FROM &quot;TASKS&quot;"></asp:SqlDataSource>
 
     <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>"
         ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>"
-        SelectCommand="SELECT &quot;USER_ID&quot;, &quot;USER_NAME&quot; FROM &quot;USERS&quot;">
-    </asp:SqlDataSource>
+        SelectCommand="SELECT &quot;USER_ID&quot;, &quot;USER_NAME&quot; FROM &quot;USERS&quot;"></asp:SqlDataSource>
 </asp:Content>
