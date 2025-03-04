@@ -24,11 +24,13 @@
                         <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Dashboard" Value="Default"></asp:MenuItem>
                         <asp:MenuItem NavigateUrl="~/Users.aspx" Text="Users" Value="Users"></asp:MenuItem>
                         <asp:MenuItem NavigateUrl="~/Projects.aspx" Text="Projects" Value="Projects"></asp:MenuItem>
-                        <asp:MenuItem NavigateUrl="~/User_Project.aspx" Text="UserProjects" Value="UserProject"></asp:MenuItem>
+                        <asp:MenuItem NavigateUrl="~/User_Project.aspx" Text="Projects Assigned" Value="UserProject"></asp:MenuItem>
                         <asp:MenuItem NavigateUrl="~/Milestones.aspx" Text="Milestones" Value="Milestones"></asp:MenuItem>
                         <asp:MenuItem NavigateUrl="~/Tasks.aspx" Text="Tasks" Value="Tasks"></asp:MenuItem>
+                        <asp:MenuItem NavigateUrl="~/User_Project_Task.aspx" Text="Tasks Assigned" Value="UserProjectTask"></asp:MenuItem>
                         <asp:MenuItem NavigateUrl="~/SubTasks.aspx" Text="SubTasks" Value="SubTasks"></asp:MenuItem>
                         <asp:MenuItem NavigateUrl="~/Resources.aspx" Text="Resources" Value="Resources"></asp:MenuItem>
+                        <asp:MenuItem NavigateUrl="~/User_Resource.aspx" Text="Resources Assigned" Value="UserResource"></asp:MenuItem>
                         <asp:MenuItem NavigateUrl="~/Comments.aspx" Text="Comments" Value="Comments"></asp:MenuItem>
                     </Items>
                 </asp:Menu>

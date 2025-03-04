@@ -5,7 +5,7 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <h2 class="mb-8 text-4xl font-bold text-[#6B1F29]">User Project Management</h2>
+    <h2 class="mb-8 text-4xl font-bold text-[#6B1F29]">Assigned Project Management</h2>
 
     <asp:FormView ID="FormView2" runat="server" DataKeyNames="USER_PROJECT_ID" DataSourceID="SqlDataSource1" CssClass="mb-8 w-1/2">
         <InsertItemTemplate>
@@ -39,7 +39,7 @@
     </div>
 
     <div class="p-6 mb-8 rounded-lg border-2 border-[#6B1F29] shadow-lg">
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="USER_PROJECT_ID" DataSourceID="SqlDataSource1" CssClass="divide-gray-200 min-w-full divide-y truncate text-center"
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="USER_PROJECT_ID" DataSourceID="SqlDataSource1" CssClass="divide-gray-200 min-w-full divide-y truncate truncate text-center"
             HeaderStyle-CssClass="bg-[#F5E6E8] text-lg"
             RowStyle-CssClass="bg-white text-md text-gray-900 hover:bg-gray-50"
             AlternatingRowStyle-CssClass="bg-gray-50 hover:bg-gray-100" AllowPaging="True" AllowSorting="True" PageSize="7" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
