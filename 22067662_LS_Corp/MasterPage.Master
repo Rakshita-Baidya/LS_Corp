@@ -1,0 +1,41 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterPage.master.cs" Inherits="_22067662_LS_Corp.MasterPage" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title><asp:ContentPlaceHolder ID="TitleContent" runat="server" /></title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body class="bg-gray-50">
+    <form id="form1" runat="server">
+        <div class="flex min-h-screen">
+            <div class="w-52 fixed h-full bg-[#8E2937]">
+                <div class="p-4 border-b-2 border-[#6B1F29]">
+                    <h1 class="text-white text-xl font-bold">LS Corporation</h1>
+                </div>
+                <asp:Menu ID="Menu1" runat="server"
+                    CssClass="space-y-1 p-4 flex flex-col"
+                    StaticMenuItemStyle-CssClass="text-white px-4 py-3 w-44 rounded-md text-lg font-medium hover:bg-[#6B1F29]"
+                    StaticSelectedStyle-CssClass="bg-[#47151B]">
+                    <Items>
+                        <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Dashboard" Value="Default"></asp:MenuItem>
+                        <asp:MenuItem NavigateUrl="~/Users.aspx" Text="Users" Value="Users"></asp:MenuItem>
+                        <asp:MenuItem NavigateUrl="~/Projects.aspx" Text="Projects" Value="Projects"></asp:MenuItem>
+                        <asp:MenuItem NavigateUrl="~/Milestones.aspx" Text="Milestones" Value="Milestones"></asp:MenuItem>
+                        <asp:MenuItem NavigateUrl="~/Tasks.aspx" Text="Tasks" Value="Tasks"></asp:MenuItem>
+                        <asp:MenuItem NavigateUrl="~/SubTasks.aspx" Text="SubTasks" Value="SubTasks"></asp:MenuItem>
+                        <asp:MenuItem NavigateUrl="~/Resources.aspx" Text="Resources" Value="Resources"></asp:MenuItem>
+                        <asp:MenuItem NavigateUrl="~/Comments.aspx" Text="Comments" Value="Comments"></asp:MenuItem>
+                    </Items>
+                </asp:Menu>
+            </div>
+            <div class="ml-52 p-8 flex-1">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server" />
+            </div>
+        </div>
+    </form>
+</body>
+</html>
