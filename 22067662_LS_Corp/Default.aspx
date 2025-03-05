@@ -1,26 +1,83 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeBehind="Milestones.aspx.cs" Inherits="_22067662_LS_Corp.Milestones" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="_22067662_LS_Corp.Default" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-    Milestones
+    Dashboard
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <h2 class="mb-8 text-4xl font-bold text-[#6B1F29]">Dashboard</h2>
-    <div class="p-6 mb-8 w-max rounded-lg border-2 border-[#6B1F29] shadow-lg">
-        <h2 class="mb-6 text-xl font-semibold text-[#6B1F29] underline">Top Performers</h2>
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="USER_ID" DataSourceID="SqlDataSource2" CssClass="divide-gray-200 min-w-full divide-y truncate text-center"
-            HeaderStyle-CssClass="bg-[#F5E6E8] text-lg"
-            RowStyle-CssClass="bg-white text-md text-gray-900 hover:bg-gray-50"
-            AlternatingRowStyle-CssClass="bg-gray-50 hover:bg-gray-100">
-            <Columns>
-                <asp:BoundField DataField="USER_ID" HeaderText="User ID" ReadOnly="True" SortExpression="USER_ID" ItemStyle-CssClass="px-6 py-4" />
-                <asp:BoundField DataField="USER_NAME" HeaderText="Name" SortExpression="USER_NAME" ItemStyle-CssClass="px-6 py-4" />
-                <asp:BoundField DataField="USER_POSITION" HeaderText="Position" SortExpression="USER_POSITION" ItemStyle-CssClass="px-6 py-4" />
-                <asp:BoundField DataField="COMPLETED_TASKS" HeaderText="Comp. Tasks" SortExpression="COMPLETED_TASKS" ItemStyle-CssClass="px-6 py-4" />
-                <asp:BoundField DataField="USER_RANK" HeaderText="Rank" SortExpression="USER_RANK" ItemStyle-CssClass="px-6 py-4" />
-            </Columns>
-        </asp:GridView>
+    <div class=" grid-col-2 gap-6 grid">
+        <div class="p-6 rounded-lg border-2 border-[#6B1F29] shadow-lg">
+            <h2 class="mb-6 text-xl font-semibold text-[#6B1F29] underline">Top Performers</h2>
+            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="USER_ID" DataSourceID="SqlDataSource2" CssClass="divide-gray-200 min-w-full divide-y truncate text-center"
+                HeaderStyle-CssClass="bg-[#F5E6E8] text-lg"
+                RowStyle-CssClass="bg-white text-md text-gray-900 hover:bg-gray-50"
+                AlternatingRowStyle-CssClass="bg-gray-50 hover:bg-gray-100">
+                <Columns>
+                    <asp:BoundField DataField="USER_ID" HeaderText="User ID" ReadOnly="True" SortExpression="USER_ID" ItemStyle-CssClass="px-6 py-4" />
+                    <asp:BoundField DataField="USER_NAME" HeaderText="Name" SortExpression="USER_NAME" ItemStyle-CssClass="px-6 py-4" />
+                    <asp:BoundField DataField="USER_POSITION" HeaderText="Position" SortExpression="USER_POSITION" ItemStyle-CssClass="px-6 py-4" />
+                    <asp:BoundField DataField="COMPLETED_TASKS" HeaderText="Comp. Tasks" SortExpression="COMPLETED_TASKS" ItemStyle-CssClass="px-6 py-4" />
+                    <asp:BoundField DataField="USER_RANK" HeaderText="Rank" SortExpression="USER_RANK" ItemStyle-CssClass="px-6 py-4" />
+                </Columns>
+            </asp:GridView>
+        </div>
+
+        <div class="p-6 rounded-lg border-2 border-[#6B1F29] shadow-lg">
+            <canvas id="projectStatusChart" width="500" height="300"></canvas>
+        </div>
     </div>
+    <asp:HiddenField ID="hfChartData" runat="server" />
+
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function () {
+            const chartDataField = document.getElementById('<%= hfChartData.ClientID %>');
+            const chartData = JSON.parse(chartDataField.value || '{"labels": [], "data": []}');
+
+            const ctx = document.getElementById('projectStatusChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: chartData.labels,
+                    datasets: [{
+                        label: 'Number of Projects',
+                        data: chartData.data, 
+                        backgroundColor: '#8E2937',
+                        borderColor: '#6B1F29',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Number of Projects',
+                                font: { size: 14, weight: 'bold' },
+                                color: '#6B1F29'
+                            }
+                        },
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Project Status',
+                                font: { size: 14, weight: 'bold' },
+                                color: '#6B1F29'
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            labels: {
+                                color: '#6B1F29'
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
 
     <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT u.USER_ID, u.USER_NAME, u.USER_POSITION, 
         COUNT(t.TASK_ID) AS COMPLETED_TASKS,
@@ -34,3 +91,5 @@
         FETCH FIRST 3 ROWS ONLY"></asp:SqlDataSource>
     <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT &quot;USER_ID&quot;, &quot;USER_NAME&quot; FROM &quot;USERS&quot;"></asp:SqlDataSource>
 </asp:Content>
+
+
