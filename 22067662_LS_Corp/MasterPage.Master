@@ -20,9 +20,9 @@
                     <h1 class="text-white text-xl font-bold">LS Corporation</h1>
                 </div>
                 <asp:Menu ID="Menu1" runat="server"
-                    CssClass="space-y-1 p-4 flex flex-col"
-                    StaticMenuItemStyle-CssClass="text-white px-4 py-2 mb-2 w-44 rounded-sm text-lg hover:bg-[#6B1F29]"
-                    StaticSelectedStyle-CssClass="bg-[#71202c] text-white px-4 py-2 mb-2 w-44 rounded-sm text-lg font-medium">
+                    CssClass="space-y-1 p-2 flex flex-col"
+                    StaticMenuItemStyle-CssClass="text-white px-4 py-2 mb-1 w-48 rounded-sm text-lg hover:bg-[#6B1F29]"
+                    StaticSelectedStyle-CssClass="bg-[#71202c] text-white px-4 py-2 mb-1 w-48 rounded-sm text-lg font-medium">
                     <Items>
                         <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Dashboard" Value="Default"></asp:MenuItem>
                         <asp:MenuItem NavigateUrl="~/Users.aspx" Text="Users" Value="Users"></asp:MenuItem>
@@ -48,7 +48,8 @@
         document.addEventListener("DOMContentLoaded", function () {
             let currentPage = window.location.pathname.split('/').pop().toLowerCase();
             document.querySelectorAll("#Menu1 a").forEach(link => {
-                if (link.getAttribute("href").toLowerCase().includes(currentPage)) {
+                let linkHref = link.getAttribute("href").split('/').pop().toLowerCase();
+                if (linkHref === currentPage) {
                     link.classList.add("bg-[#47151B]");
                 }
             });
