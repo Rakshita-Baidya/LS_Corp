@@ -4,22 +4,25 @@
 
 <html>
 <head runat="server">
-    <title><asp:ContentPlaceHolder ID="TitleContent" runat="server" /></title>
+    <title>
+        <asp:ContentPlaceHolder ID="TitleContent" runat="server" />
+    </title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body class="bg-gray-50">
     <form id="form1" runat="server">
         <div class="flex min-h-screen">
-            <div class="w-52 fixed h-full bg-[#8E2937]">
+            <div class="w-52 fixed h-full bg-[#7f2431]">
                 <div class="p-4 border-b-2 border-[#6B1F29]">
                     <h1 class="text-white text-xl font-bold">LS Corporation</h1>
                 </div>
                 <asp:Menu ID="Menu1" runat="server"
                     CssClass="space-y-1 p-4 flex flex-col"
-                    StaticMenuItemStyle-CssClass="text-white px-4 py-3 w-44 rounded-md text-lg font-medium hover:bg-[#6B1F29]"
-                    StaticSelectedStyle-CssClass="bg-[#47151B]">
+                    StaticMenuItemStyle-CssClass="text-white px-4 py-2 mb-2 w-44 rounded-sm text-lg hover:bg-[#6B1F29]"
+                    StaticSelectedStyle-CssClass="bg-[#71202c] text-white px-4 py-2 mb-2 w-44 rounded-sm text-lg font-medium">
                     <Items>
                         <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Dashboard" Value="Default"></asp:MenuItem>
                         <asp:MenuItem NavigateUrl="~/Users.aspx" Text="Users" Value="Users"></asp:MenuItem>
@@ -40,5 +43,16 @@
             </div>
         </div>
     </form>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let currentPage = window.location.pathname.split('/').pop().toLowerCase();
+            document.querySelectorAll("#Menu1 a").forEach(link => {
+                if (link.getAttribute("href").toLowerCase().includes(currentPage)) {
+                    link.classList.add("bg-[#47151B]");
+                }
+            });
+        });
+    </script>
 </body>
 </html>
