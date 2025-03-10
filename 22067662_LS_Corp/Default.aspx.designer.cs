@@ -33,13 +33,13 @@ namespace _22067662_LS_Corp
         protected global::System.Web.UI.WebControls.GridView GridView1;
 
         /// <summary>
-        /// hfChartData control.
+        /// ChartTimeline control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hfChartData;
+        protected global::System.Web.UI.DataVisualization.Charting.Chart ChartTimeline;
 
         /// <summary>
         /// SqlDataSource2 control.
@@ -67,5 +67,14 @@ namespace _22067662_LS_Corp
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource4;
+
+        /// <summary>
+        /// SqlDataSource5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource5;
     }
 }

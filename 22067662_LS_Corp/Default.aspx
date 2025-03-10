@@ -1,92 +1,98 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="_22067662_LS_Corp.Default" %>
 
+<%@ Register Assembly="System.Web.DataVisualization, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" Namespace="System.Web.UI.DataVisualization.Charting" TagPrefix="asp" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
     Dashboard
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <h2 class="mb-8 text-4xl font-bold text-[#6B1F29]">Dashboard</h2>
-    <div class=" grid-col-2 gap-6 grid">
-        <div class="p-6 rounded-lg border-2 border-[#6B1F29] shadow-lg">
-            <h2 class="mb-6 text-xl font-semibold text-[#6B1F29] underline">Top Performers</h2>
-            <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True" DataSourceID="SqlDataSource4" DataTextField="PROJECT_NAME" DataValueField="PROJECT_ID">
+    <div class="gap-6 mb-8 grid grid-cols-5">
+        <div class="p-6 text-white rounded-lg bg-[#8E2937] shadow-lg">
+            <h3 class="text-lg font-semibold">Total Users</h3>
+            <asp:DropDownList runat="server" DataSourceID="SqlDataSource5" DataTextField="TotalUsers" DataValueField="TotalUsers"
+                CssClass="bg-transparent text-white appearance-none border-none text-3xl font-bold outline-none" Enabled="False">
             </asp:DropDownList>
-            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="USER_ID" DataSourceID="SqlDataSource2" CssClass="divide-gray-200 min-w-full divide-y truncate text-center"
-                HeaderStyle-CssClass="bg-[#F5E6E8] text-lg"
-                RowStyle-CssClass="bg-white text-md text-gray-900 hover:bg-gray-50"
-                AlternatingRowStyle-CssClass="bg-gray-50 hover:bg-gray-100">
-<AlternatingRowStyle CssClass="bg-gray-50 hover:bg-gray-100"></AlternatingRowStyle>
-                <Columns>
-                    <asp:BoundField DataField="USER_ID" HeaderText="USER_ID" ReadOnly="True" SortExpression="USER_ID" ItemStyle-CssClass="px-6 py-4" />
-                    <asp:BoundField DataField="USER_NAME" HeaderText="USER_NAME" SortExpression="USER_NAME" ItemStyle-CssClass="px-6 py-4" />
-                    <asp:BoundField DataField="USER_POSITION" HeaderText="USER_POSITION" SortExpression="USER_POSITION" ItemStyle-CssClass="px-6 py-4" />
-                    <asp:BoundField DataField="COMPLETED_TASKS" HeaderText="COMPLETED_TASKS" SortExpression="COMPLETED_TASKS" ItemStyle-CssClass="px-6 py-4" />
-                    <asp:BoundField DataField="USER_RANK" HeaderText="USER_RANK" SortExpression="USER_RANK" ItemStyle-CssClass="px-6 py-4" />
-                </Columns>
-
-<HeaderStyle CssClass="bg-[#F5E6E8] text-lg"></HeaderStyle>
-
-<RowStyle CssClass="bg-white text-md text-gray-900 hover:bg-gray-50"></RowStyle>
-            </asp:GridView>
         </div>
-
-        <div class="p-6 rounded-lg border-2 border-[#6B1F29] shadow-lg">
-            <canvas id="projectStatusChart" width="500" height="300"></canvas>
+        <div class="p-6 text-white rounded-lg bg-[#8E2937] shadow-lg">
+            <h3 class="text-lg font-semibold">Total Projects</h3>
+            <asp:DropDownList runat="server" DataSourceID="SqlDataSource5" DataTextField="TotalProjects" DataValueField="TotalProjects"
+                CssClass="bg-transparent text-white appearance-none border-none text-3xl font-bold outline-none" Enabled="False">
+            </asp:DropDownList>
+        </div>
+        <div class="p-6 text-white rounded-lg bg-[#8E2937] shadow-lg">
+            <h3 class="text-lg font-semibold">Total Tasks</h3>
+            <asp:DropDownList runat="server" DataSourceID="SqlDataSource5" DataTextField="TotalTasks" DataValueField="TotalTasks"
+                CssClass="bg-transparent text-white appearance-none border-none text-3xl font-bold outline-none" Enabled="False">
+            </asp:DropDownList>
+        </div>
+        <div class="p-6 text-white rounded-lg bg-[#8E2937] shadow-lg">
+            <h3 class="text-lg font-semibold">Total SubTasks</h3>
+            <asp:DropDownList runat="server" DataSourceID="SqlDataSource5" DataTextField="TotalSubTasks" DataValueField="TotalSubTasks"
+                CssClass="bg-transparent text-white appearance-none border-none text-3xl font-bold outline-none" Enabled="False">
+            </asp:DropDownList>
+        </div>
+        <div class="p-6 text-white rounded-lg bg-[#8E2937] shadow-lg">
+            <h3 class="text-lg font-semibold">Total Resources</h3>
+            <asp:DropDownList runat="server" DataSourceID="SqlDataSource5" DataTextField="TotalResources" DataValueField="TotalResources"
+                CssClass="bg-transparent text-white appearance-none border-none text-3xl font-bold outline-none" Enabled="False">
+            </asp:DropDownList>
         </div>
     </div>
-    <asp:HiddenField ID="hfChartData" runat="server" />
+    <div class="p-6 rounded-lg border-2 border-[#6B1F29] shadow-lg">
+        <h2 class="mb-6 text-xl font-semibold text-[#6B1F29] underline">Top Performers</h2>
+        <div class="mb-6">
+            <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True" DataSourceID="SqlDataSource4" DataTextField="PROJECT_NAME"
+                DataValueField="PROJECT_ID"
+                CssClass="py-1 px-2 border-gray-500 border shadow-sm focus:border-[#B54555] focus:ring-[#B54555]">
+            </asp:DropDownList>
+        </div>
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="USER_ID" DataSourceID="SqlDataSource2" CssClass="divide-gray-200 min-w-full divide-y truncate text-center"
+            HeaderStyle-CssClass="bg-[#F5E6E8] text-lg"
+            RowStyle-CssClass="bg-white text-md text-gray-900 hover:bg-gray-50"
+            AlternatingRowStyle-CssClass="bg-gray-50 hover:bg-gray-100">
+            <AlternatingRowStyle CssClass="bg-gray-50 hover:bg-gray-100"></AlternatingRowStyle>
+            <Columns>
+                <asp:BoundField DataField="USER_ID" HeaderText="USER_ID" ReadOnly="True" SortExpression="USER_ID" ItemStyle-CssClass="px-6 py-4" />
+                <asp:BoundField DataField="USER_NAME" HeaderText="USER_NAME" SortExpression="USER_NAME" ItemStyle-CssClass="px-6 py-4" />
+                <asp:BoundField DataField="USER_POSITION" HeaderText="USER_POSITION" SortExpression="USER_POSITION" ItemStyle-CssClass="px-6 py-4" />
+                <asp:BoundField DataField="COMPLETED_TASKS" HeaderText="COMPLETED_TASKS" SortExpression="COMPLETED_TASKS" ItemStyle-CssClass="px-6 py-4" />
+                <asp:BoundField DataField="USER_RANK" HeaderText="USER_RANK" SortExpression="USER_RANK" ItemStyle-CssClass="px-6 py-4" />
+            </Columns>
 
-    <script type="text/javascript">
-        document.addEventListener('DOMContentLoaded', function () {
-            const chartDataField = document.getElementById('<%= hfChartData.ClientID %>');
-            const chartData = JSON.parse(chartDataField.value || '{"labels": [], "data": []}');
+            <HeaderStyle CssClass="bg-[#F5E6E8] text-lg"></HeaderStyle>
 
-            const ctx = document.getElementById('projectStatusChart').getContext('2d');
-            new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: chartData.labels,
-                    datasets: [{
-                        label: 'Number of Projects',
-                        data: chartData.data, 
-                        backgroundColor: '#8E2937',
-                        borderColor: '#6B1F29',
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            title: {
-                                display: true,
-                                text: 'Number of Projects',
-                                font: { size: 14, weight: 'bold' },
-                                color: '#6B1F29'
-                            }
-                        },
-                        x: {
-                            title: {
-                                display: true,
-                                text: 'Project Status',
-                                font: { size: 14, weight: 'bold' },
-                                color: '#6B1F29'
-                            }
-                        }
-                    },
-                    plugins: {
-                        legend: {
-                            labels: {
-                                color: '#6B1F29'
-                            }
-                        }
-                    }
-                }
-            });
-        });
-    </script>
+            <RowStyle CssClass="bg-white text-md text-gray-900 hover:bg-gray-50"></RowStyle>
+        </asp:GridView>
+    </div>
+    <div class="p-6 rounded-lg border-2 border-[#6B1F29] shadow-lg">
+        <h2 class="mb-6 text-xl font-semibold text-[#6B1F29] underline">Ongoing Project Timelines</h2>
+        <asp:Chart ID="ChartTimeline" runat="server" DataSourceID="SqlDataSource4" Width="1000px" Height="600px" CssClass="mx-auto">
+            <Series>
+                <asp:Series Name="Timeline" ChartType="RangeBar" XValueMember="PROJECT_NAME" YValueMembers="PROJECT_START_DATE,PROJECT_DUE_DATE" Color="#8E2937" BorderColor="#6B1F29" BorderWidth="2">
+                    <SmartLabelStyle Enabled="True" />
+                </asp:Series>
+            </Series>
+            <ChartAreas>
+                <asp:ChartArea Name="ChartArea1" BackColor="#F5E6E8">
+                    <AxisX Title="Project Name" LineColor="#6B1F29" Interval="1" IsLabelAutoFit="False" LabelStyle-Font="Arial, 10pt" LabelStyle-Angle="-45">
+                        <MajorGrid LineColor="#D3D3D3" />
+                        <LabelStyle TruncatedLabels="False" />
+                    </AxisX>
+                    <AxisY Title="Timeline" LineColor="#6B1F29" IntervalType="Months" Interval="1">
+                        <MajorGrid LineColor="#D3D3D3" />
+                    </AxisY>
+                </asp:ChartArea>
+            </ChartAreas>
+        </asp:Chart>
 
-    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT u.USER_ID, u.USER_NAME, u.USER_POSITION, 
+
+
+    </div>
+
+    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>"
+        SelectCommand="SELECT u.USER_ID, u.USER_NAME, u.USER_POSITION, 
         COUNT(t.TASK_ID) AS COMPLETED_TASKS,
         RANK() OVER (ORDER BY COUNT(t.TASK_ID) DESC) AS USER_rank
         FROM USERS u
@@ -101,7 +107,8 @@
         </SelectParameters>
     </asp:SqlDataSource>
     <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT &quot;USER_ID&quot;, &quot;USER_NAME&quot; FROM &quot;USERS&quot;"></asp:SqlDataSource>
-    <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT &quot;PROJECT_ID&quot;, &quot;PROJECT_NAME&quot;, &quot;PROJECT_START_DATE&quot;, &quot;PROJECT_DUE_DATE&quot;, &quot;PROJECT_STATUS&quot; FROM &quot;PROJECTS&quot;"></asp:SqlDataSource>
+    <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT PROJECT_ID, PROJECT_NAME, PROJECT_START_DATE, PROJECT_DUE_DATE, PROJECT_STATUS FROM PROJECTS WHERE (PROJECT_STATUS = 'Ongoing')"></asp:SqlDataSource>
+    <asp:SqlDataSource ID="SqlDataSource5" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT (SELECT COUNT(DISTINCT user_id) FROM users) AS TotalUsers, (SELECT COUNT(DISTINCT project_id) FROM projects) AS TotalProjects, (SELECT COUNT(DISTINCT task_id) FROM tasks) AS TotalTasks, (SELECT COUNT(DISTINCT resource_id) FROM resources) AS TotalResources, (SELECT COUNT(DISTINCT subtask_id) FROM subtasks) AS TotalSubtasks FROM &quot;DUAL&quot;"></asp:SqlDataSource>
 </asp:Content>
 
 
