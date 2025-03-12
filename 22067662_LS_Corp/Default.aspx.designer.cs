@@ -33,6 +33,15 @@ namespace _22067662_LS_Corp
         protected global::System.Web.UI.WebControls.GridView GridView1;
 
         /// <summary>
+        /// ChartUserPosition control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.DataVisualization.Charting.Chart ChartUserPosition;
+
+        /// <summary>
         /// ChartTimeline control.
         /// </summary>
         /// <remarks>
@@ -76,5 +85,14 @@ namespace _22067662_LS_Corp
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource5;
+
+        /// <summary>
+        /// SqlDataSource6 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource6;
     }
 }
