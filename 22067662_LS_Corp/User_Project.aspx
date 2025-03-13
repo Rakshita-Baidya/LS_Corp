@@ -31,16 +31,20 @@
         <ItemTemplate>
             <asp:LinkButton ID="NewButton" runat="server" CausesValidation="False" CommandName="New" Text="Add User-Project" CssClass="text-white px-4 py-2 rounded bg-[#8E2937] hover:bg-[#6B1F29]" />
         </ItemTemplate>
+                <EmptyDataTemplate>
+            <asp:LinkButton ID="NewButton" runat="server" CausesValidation="False" CommandName="New" Text="Add User-Project" CssClass="text-white px-4 py-2 rounded bg-[#8E2937] hover:bg-[#6B1F29]" />
+
+</EmptyDataTemplate>
     </asp:FormView>
 
     <div class="mb-6 space-x-4 flex">
         <div>
-            <asp:DropDownList ID="DropDownList8" runat="server" AutoPostBack="True" CssClass="py-1 px-2 border-gray-500 rounded border shadow-sm focus:border-[#B54555] focus:ring-[#B54555]">
+            <asp:DropDownList ID="DropDownList8" runat="server" AutoPostBack="True" CssClass="py-1 px-2 max-w-48 border-gray-500 rounded border shadow-sm focus:border-[#B54555] focus:ring-[#B54555]">
                 <asp:ListItem Text="All Users" Value="" />
             </asp:DropDownList>
         </div>
         <div>
-            <asp:DropDownList ID="DropDownList9" runat="server" AutoPostBack="True" CssClass="py-1 px-2 border-gray-500 rounded border shadow-sm focus:border-[#B54555] focus:ring-[#B54555]">
+            <asp:DropDownList ID="DropDownList9" runat="server" AutoPostBack="True" CssClass="py-1 px-2 max-w-48 border-gray-500 rounded border shadow-sm focus:border-[#B54555] focus:ring-[#B54555]">
                 <asp:ListItem Text="All Projects" Value="" />
             </asp:DropDownList>
         </div>
@@ -51,7 +55,8 @@
             CssClass="divide-gray-200 min-w-full divide-y truncate text-center"
             HeaderStyle-CssClass="bg-[#F5E6E8] text-lg"
             RowStyle-CssClass="bg-white text-md text-gray-900 hover:bg-gray-50"
-            AlternatingRowStyle-CssClass="bg-gray-50 hover:bg-gray-100" AllowPaging="True" AllowSorting="True" PageSize="6" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
+            AlternatingRowStyle-CssClass="bg-gray-50 hover:bg-gray-100" AllowPaging="True" AllowSorting="True" PageSize="6" OnSelectedIndexChanged="GridView1_SelectedIndexChanged"
+             EmptyDataText="No assigned project found" EmptyDataRowStyle-CssClass="text-gray-700 py-4 text-lg">
             <PagerSettings Mode="NextPrevious"
                 PreviousPageImageUrl="~/Images/prev.svg"
                 PreviousPageText="Prev"

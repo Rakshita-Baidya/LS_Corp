@@ -45,13 +45,23 @@
         <ItemTemplate>
             <asp:LinkButton ID="NewButton" runat="server" CausesValidation="False" CommandName="New" Text="Add SubTask" CssClass="text-white px-4 py-2 rounded bg-[#8E2937] hover:bg-[#6B1F29]" />
         </ItemTemplate>
-    </asp:FormView>
+        <EmptyDataTemplate>
+            <asp:LinkButton ID="NewButton" runat="server" CausesValidation="False" CommandName="New" Text="Add SubTask" CssClass="text-white px-4 py-2 rounded bg-[#8E2937] hover:bg-[#6B1F29]" />
 
+        </EmptyDataTemplate>
+    </asp:FormView>
+    <div class="mb-6">
+        <asp:DropDownList ID="DropDownList2" runat="server" AutoPostBack="True" DataTextField="TASK_NAME" DataValueField="TASK_ID"
+            CssClass="py-1 px-2 max-w-48 border-gray-500 rounded border shadow-sm focus:border-[#B54555] focus:ring-[#B54555]">
+            <asp:ListItem Text="All Tasks" Value="" />
+        </asp:DropDownList>
+    </div>
     <div class="p-6 mb-8 rounded-lg border-2 border-[#6B1F29] shadow-lg">
         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="SUBTASK_ID" DataSourceID="SqlDataSource1" CssClass="divide-gray-200 min-w-full divide-y truncate text-center"
             HeaderStyle-CssClass="bg-[#F5E6E8] text-lg"
             RowStyle-CssClass="bg-white text-md text-gray-900 hover:bg-gray-50"
-            AlternatingRowStyle-CssClass="bg-gray-50 hover:bg-gray-100" AllowPaging="True" AllowSorting="True" PageSize="7">
+            AlternatingRowStyle-CssClass="bg-gray-50 hover:bg-gray-100" AllowPaging="True" AllowSorting="True" PageSize="7"
+            EmptyDataText="No subtask found" EmptyDataRowStyle-CssClass="text-gray-700 py-4 text-lg">
             <PagerSettings Mode="NextPrevious"
                 PreviousPageImageUrl="~/Images/prev.svg"
                 PreviousPageText="Prev"
@@ -125,14 +135,13 @@
             </Columns>
         </asp:GridView>
     </div>
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" DeleteCommand="DELETE FROM &quot;SUBTASKS&quot; WHERE &quot;SUBTASK_ID&quot; = :SUBTASK_ID" 
-        InsertCommand="INSERT INTO &quot;SUBTASKS&quot; (&quot;SUBTASK_ID&quot;, &quot;SUBTASK_START_DATE&quot;, &quot;SUBTASK_NAME&quot;, &quot;SUBTASK_DUE_DATE&quot;, &quot;SUBTASK_STATUS&quot;, &quot;TASK_ID&quot;) VALUES (:SUBTASK_ID, :SUBTASK_START_DATE, :SUBTASK_NAME, :SUBTASK_DUE_DATE, :SUBTASK_STATUS, :TASK_ID)" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" 
-        SelectCommand="SELECT &quot;SUBTASK_ID&quot;, &quot;SUBTASK_START_DATE&quot;, &quot;SUBTASK_NAME&quot;, &quot;SUBTASK_DUE_DATE&quot;, &quot;SUBTASK_STATUS&quot;, &quot;TASK_ID&quot; FROM &quot;SUBTASKS&quot;" 
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" DeleteCommand="DELETE FROM &quot;SUBTASKS&quot; WHERE &quot;SUBTASK_ID&quot; = :SUBTASK_ID"
+        InsertCommand="INSERT INTO &quot;SUBTASKS&quot; (&quot;SUBTASK_ID&quot;, &quot;SUBTASK_START_DATE&quot;, &quot;SUBTASK_NAME&quot;, &quot;SUBTASK_DUE_DATE&quot;, &quot;SUBTASK_STATUS&quot;, &quot;TASK_ID&quot;) VALUES (:SUBTASK_ID, :SUBTASK_START_DATE, :SUBTASK_NAME, :SUBTASK_DUE_DATE, :SUBTASK_STATUS, :TASK_ID)" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>"
+        SelectCommand="SELECT &quot;SUBTASK_ID&quot;, &quot;SUBTASK_START_DATE&quot;, &quot;SUBTASK_NAME&quot;, &quot;SUBTASK_DUE_DATE&quot;, &quot;SUBTASK_STATUS&quot;, &quot;TASK_ID&quot; FROM &quot;SUBTASKS&quot; where (:TaskID = -1 OR TASK_ID = :TaskID)"
         UpdateCommand="UPDATE &quot;SUBTASKS&quot; SET &quot;SUBTASK_START_DATE&quot; = :SUBTASK_START_DATE, &quot;SUBTASK_NAME&quot; = :SUBTASK_NAME, &quot;SUBTASK_DUE_DATE&quot; = :SUBTASK_DUE_DATE, &quot;SUBTASK_STATUS&quot; = :SUBTASK_STATUS, &quot;TASK_ID&quot; = :TASK_ID WHERE &quot;SUBTASK_ID&quot; = :SUBTASK_ID"
         OnInserted="SqlDataSource1_Inserted"
         OnUpdated="SqlDataSource1_Updated"
-        OnDeleted="SqlDataSource1_Deleted"
-        >
+        OnDeleted="SqlDataSource1_Deleted">
         <DeleteParameters>
             <asp:Parameter Name="SUBTASK_ID" Type="Decimal" />
         </DeleteParameters>
@@ -144,6 +153,9 @@
             <asp:Parameter Name="SUBTASK_STATUS" Type="String" />
             <asp:Parameter Name="TASK_ID" Type="Decimal" />
         </InsertParameters>
+        <SelectParameters>
+            <asp:ControlParameter ControlID="DropDownList2" DefaultValue="-1" Name="TaskID" PropertyName="SelectedValue" />
+        </SelectParameters>
         <UpdateParameters>
             <asp:Parameter Name="SUBTASK_START_DATE" Type="DateTime" />
             <asp:Parameter Name="SUBTASK_NAME" Type="String" />
@@ -154,20 +166,19 @@
         </UpdateParameters>
     </asp:SqlDataSource>
 
-    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT &quot;TASK_ID&quot;, &quot;TASK_NAME&quot; FROM &quot;TASKS&quot;"
-        ></asp:SqlDataSource>
+    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT &quot;TASK_ID&quot;, &quot;TASK_NAME&quot; FROM &quot;TASKS&quot;"></asp:SqlDataSource>
 
-     <script>
-     function showToast(message, type) {
-         Swal.fire({
-             toast: true,
-             position: 'top-end',
-             icon: type,
-             title: message,
-             showConfirmButton: false,
-             timer: 3000,
-             timerProgressBar: true
-         });
-     }
-     </script>
+    <script>
+        function showToast(message, type) {
+            Swal.fire({
+                toast: true,
+                position: 'top-end',
+                icon: type,
+                title: message,
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true
+            });
+        }
+    </script>
 </asp:Content>

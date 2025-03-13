@@ -150,7 +150,7 @@
         FROM USERS u
         JOIN USER_PROJECT_TASK upt ON u.USER_ID = upt.USER_ID
         JOIN TASKS t ON upt.TASK_ID = t.TASK_ID
-        WHERE t.Task_STATUS = 'Completed' and (upt.PROJECT_ID = :ProjectID)
+        WHERE t.Task_STATUS = 'Completed' AND (:ProjectID = -1 OR upt.PROJECT_ID = :ProjectID)
         GROUP BY u.USER_ID, u.USER_NAME, u.USER_POSITION
         ORDER BY COMPLETED_TASKS DESC
         FETCH FIRST 3 ROWS ONLY">

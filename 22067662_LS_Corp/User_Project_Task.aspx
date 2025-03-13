@@ -35,13 +35,34 @@
         <ItemTemplate>
             <asp:LinkButton ID="NewButton" runat="server" CausesValidation="False" CommandName="New" Text="Add User-Project-Task" CssClass="text-white px-4 py-2 rounded bg-[#8E2937] hover:bg-[#6B1F29]" />
         </ItemTemplate>
+         <EmptyDataTemplate>
+            <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="False" CommandName="New" Text="Add User-Project-Task" CssClass="text-white px-4 py-2 rounded bg-[#8E2937] hover:bg-[#6B1F29]" />
+ </EmptyDataTemplate>
     </asp:FormView>
-
+    <div class="mb-6 space-x-4 flex">
+        <div>
+            <asp:DropDownList ID="DropDownList4" runat="server" AutoPostBack="True" CssClass="py-1 px-2 max-w-48 border-gray-500 rounded border shadow-sm focus:border-[#B54555] focus:ring-[#B54555]">
+                <asp:ListItem Text="All Users" Value="" />
+            </asp:DropDownList>
+        </div>
+        <div>
+            <asp:DropDownList ID="DropDownList5" runat="server" AutoPostBack="True" CssClass="py-1 px-2 max-w-48 border-gray-500 rounded border shadow-sm focus:border-[#B54555] focus:ring-[#B54555]">
+                <asp:ListItem Text="All Projects" Value="" />
+            </asp:DropDownList>
+        </div>
+        <div>
+            <asp:DropDownList ID="DropDownList6" runat="server" AutoPostBack="True" CssClass="py-1 px-2 max-w-48 border-gray-500 rounded border shadow-sm focus:border-[#B54555] focus:ring-[#B54555]">
+                <asp:ListItem Text="All Tasks" Value="" />
+            </asp:DropDownList>
+        </div>
+    </div>
     <div class="p-6 mb-8 rounded-lg border-2 border-[#6B1F29] shadow-lg">
+
         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="USER_PROJECT_TASK_ID" DataSourceID="SqlDataSource1" CssClass="divide-gray-200 min-w-full divide-y truncate text-center"
             HeaderStyle-CssClass="bg-[#F5E6E8] text-lg"
             RowStyle-CssClass="bg-white text-md text-gray-900 hover:bg-gray-50"
-            AlternatingRowStyle-CssClass="bg-gray-50 hover:bg-gray-100" AllowPaging="True" AllowSorting="True" PageSize="6">
+            AlternatingRowStyle-CssClass="bg-gray-50 hover:bg-gray-100" AllowPaging="True" AllowSorting="True" PageSize="6"
+             EmptyDataText="No assigned task found" EmptyDataRowStyle-CssClass="text-gray-700 py-4 text-lg">
             <PagerSettings Mode="NextPrevious"
                 PreviousPageImageUrl="~/Images/prev.svg"
                 PreviousPageText="Prev"
@@ -109,9 +130,11 @@
         </asp:GridView>
     </div>
 
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" DeleteCommand="DELETE FROM &quot;USER_PROJECT_TASK&quot; WHERE &quot;USER_PROJECT_TASK_ID&quot; = :USER_PROJECT_TASK_ID"
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
+        DeleteCommand="DELETE FROM &quot;USER_PROJECT_TASK&quot; WHERE &quot;USER_PROJECT_TASK_ID&quot; = :USER_PROJECT_TASK_ID"
         InsertCommand="INSERT INTO &quot;USER_PROJECT_TASK&quot; (&quot;USER_PROJECT_TASK_ID&quot;, &quot;TASK_ID&quot;, &quot;USER_ID&quot;, &quot;PROJECT_ID&quot;) VALUES (:USER_PROJECT_TASK_ID, :TASK_ID, :USER_ID, :PROJECT_ID)"
-        ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT &quot;USER_PROJECT_TASK_ID&quot;, &quot;TASK_ID&quot;, &quot;USER_ID&quot;, &quot;PROJECT_ID&quot; FROM &quot;USER_PROJECT_TASK&quot;"
+        ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" 
+        SelectCommand="SELECT USER_PROJECT_TASK_ID, TASK_ID, USER_ID, PROJECT_ID FROM USER_PROJECT_TASK WHERE (:USER_ID = -1 OR USER_ID = :USER_ID) AND (:PROJECT_ID =-1 OR PROJECT_ID = :PROJECT_ID) AND (:TASK_ID =-1 OR TASK_ID = :TASK_ID)"
         UpdateCommand="UPDATE &quot;USER_PROJECT_TASK&quot; SET &quot;TASK_ID&quot; = :TASK_ID, &quot;USER_ID&quot; = :USER_ID, &quot;PROJECT_ID&quot; = :PROJECT_ID WHERE &quot;USER_PROJECT_TASK_ID&quot; = :USER_PROJECT_TASK_ID"
         OnInserted="SqlDataSource1_Inserted"
         OnUpdated="SqlDataSource1_Updated"
@@ -125,6 +148,11 @@
             <asp:Parameter Name="USER_ID" Type="Decimal" />
             <asp:Parameter Name="PROJECT_ID" Type="Decimal" />
         </InsertParameters>
+        <SelectParameters>
+            <asp:ControlParameter ControlID="DropDownList4" DefaultValue="-1" Name="USER_ID" PropertyName="SelectedValue" />
+            <asp:ControlParameter ControlID="DropDownList5" DefaultValue="-1" Name="PROJECT_ID" PropertyName="SelectedValue" />
+            <asp:ControlParameter ControlID="DropDownList6" DefaultValue="-1" Name="TASK_ID" PropertyName="SelectedValue" />
+        </SelectParameters>
         <UpdateParameters>
             <asp:Parameter Name="TASK_ID" Type="Decimal" />
             <asp:Parameter Name="USER_ID" Type="Decimal" />
