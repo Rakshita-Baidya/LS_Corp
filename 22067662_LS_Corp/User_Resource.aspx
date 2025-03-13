@@ -109,7 +109,13 @@
         </asp:GridView>
     </div>
 
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" DeleteCommand="DELETE FROM &quot;USER_TASK_RESOURCE&quot; WHERE &quot;USER_TASK_RESOURCE_ID&quot; = :USER_TASK_RESOURCE_ID" InsertCommand="INSERT INTO &quot;USER_TASK_RESOURCE&quot; (&quot;USER_TASK_RESOURCE_ID&quot;, &quot;USER_ID&quot;, &quot;TASK_ID&quot;, &quot;RESOURCE_ID&quot;) VALUES (:USER_TASK_RESOURCE_ID, :USER_ID, :TASK_ID, :RESOURCE_ID)" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT &quot;USER_TASK_RESOURCE_ID&quot;, &quot;USER_ID&quot;, &quot;TASK_ID&quot;, &quot;RESOURCE_ID&quot; FROM &quot;USER_TASK_RESOURCE&quot; ORDER BY &quot;USER_TASK_RESOURCE_ID&quot;" UpdateCommand="UPDATE &quot;USER_TASK_RESOURCE&quot; SET &quot;USER_ID&quot; = :USER_ID, &quot;TASK_ID&quot; = :TASK_ID, &quot;RESOURCE_ID&quot; = :RESOURCE_ID WHERE &quot;USER_TASK_RESOURCE_ID&quot; = :USER_TASK_RESOURCE_ID">
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" DeleteCommand="DELETE FROM &quot;USER_TASK_RESOURCE&quot; WHERE &quot;USER_TASK_RESOURCE_ID&quot; = :USER_TASK_RESOURCE_ID" 
+        InsertCommand="INSERT INTO &quot;USER_TASK_RESOURCE&quot; (&quot;USER_TASK_RESOURCE_ID&quot;, &quot;USER_ID&quot;, &quot;TASK_ID&quot;, &quot;RESOURCE_ID&quot;) VALUES (:USER_TASK_RESOURCE_ID, :USER_ID, :TASK_ID, :RESOURCE_ID)" 
+        ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT &quot;USER_TASK_RESOURCE_ID&quot;, &quot;USER_ID&quot;, &quot;TASK_ID&quot;, &quot;RESOURCE_ID&quot; FROM &quot;USER_TASK_RESOURCE&quot; ORDER BY &quot;USER_TASK_RESOURCE_ID&quot;" 
+        UpdateCommand="UPDATE &quot;USER_TASK_RESOURCE&quot; SET &quot;USER_ID&quot; = :USER_ID, &quot;TASK_ID&quot; = :TASK_ID, &quot;RESOURCE_ID&quot; = :RESOURCE_ID WHERE &quot;USER_TASK_RESOURCE_ID&quot; = :USER_TASK_RESOURCE_ID"
+                OnInserted="SqlDataSource1_Inserted"
+        OnUpdated="SqlDataSource1_Updated"
+        OnDeleted="SqlDataSource1_Deleted">
         <DeleteParameters>
             <asp:Parameter Name="USER_TASK_RESOURCE_ID" Type="Decimal" />
         </DeleteParameters>
@@ -130,5 +136,17 @@
     <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT &quot;TASK_ID&quot;, &quot;TASK_NAME&quot; FROM &quot;TASKS&quot;"></asp:SqlDataSource>
     <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT &quot;RESOURCE_NAME&quot;, &quot;RESOURCE_ID&quot; FROM &quot;RESOURCES&quot;"></asp:SqlDataSource>
 
-
+     <script>
+     function showToast(message, type) {
+         Swal.fire({
+             toast: true,
+             position: 'top-end',
+             icon: type,
+             title: message,
+             showConfirmButton: false,
+             timer: 3000,
+             timerProgressBar: true
+         });
+     }
+     </script>
 </asp:Content>

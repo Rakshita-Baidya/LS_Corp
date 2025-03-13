@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace _22067662_LS_Corp
@@ -17,6 +13,21 @@ namespace _22067662_LS_Corp
         protected void SqlDataSource2_Selecting(object sender, SqlDataSourceSelectingEventArgs e)
         {
 
+        }
+
+        protected void SqlDataSource1_Inserted(object sender, SqlDataSourceStatusEventArgs e)
+        {
+            ClientScript.RegisterStartupScript(this.GetType(), "toast", "showToast('Milestone added successfully!', 'success');", true);
+        }
+
+        protected void SqlDataSource1_Updated(object sender, SqlDataSourceStatusEventArgs e)
+        {
+            ClientScript.RegisterStartupScript(this.GetType(), "toast", "showToast('Milestone updated successfully!', 'info');", true);
+        }
+
+        protected void SqlDataSource1_Deleted(object sender, SqlDataSourceStatusEventArgs e)
+        {
+            ClientScript.RegisterStartupScript(this.GetType(), "toast", "showToast('Milestone deleted successfully!', 'warning');", true);
         }
     }
 }

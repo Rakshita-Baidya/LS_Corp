@@ -107,7 +107,10 @@
             </Columns>
         </asp:GridView>
     </div>
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" DeleteCommand="DELETE FROM &quot;PROJECTS&quot; WHERE &quot;PROJECT_ID&quot; = :PROJECT_ID" InsertCommand="INSERT INTO &quot;PROJECTS&quot; (&quot;PROJECT_ID&quot;, &quot;PROJECT_START_DATE&quot;, &quot;PROJECT_NAME&quot;, &quot;PROJECT_DUE_DATE&quot;, &quot;PROJECT_STATUS&quot;) VALUES (:PROJECT_ID, :PROJECT_START_DATE, :PROJECT_NAME, :PROJECT_DUE_DATE, :PROJECT_STATUS)" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT &quot;PROJECT_ID&quot;, &quot;PROJECT_START_DATE&quot;, &quot;PROJECT_NAME&quot;, &quot;PROJECT_DUE_DATE&quot;, &quot;PROJECT_STATUS&quot; FROM &quot;PROJECTS&quot;" UpdateCommand="UPDATE &quot;PROJECTS&quot; SET &quot;PROJECT_START_DATE&quot; = :PROJECT_START_DATE, &quot;PROJECT_NAME&quot; = :PROJECT_NAME, &quot;PROJECT_DUE_DATE&quot; = :PROJECT_DUE_DATE, &quot;PROJECT_STATUS&quot; = :PROJECT_STATUS WHERE &quot;PROJECT_ID&quot; = :PROJECT_ID">
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" DeleteCommand="DELETE FROM &quot;PROJECTS&quot; WHERE &quot;PROJECT_ID&quot; = :PROJECT_ID" InsertCommand="INSERT INTO &quot;PROJECTS&quot; (&quot;PROJECT_ID&quot;, &quot;PROJECT_START_DATE&quot;, &quot;PROJECT_NAME&quot;, &quot;PROJECT_DUE_DATE&quot;, &quot;PROJECT_STATUS&quot;) VALUES (:PROJECT_ID, :PROJECT_START_DATE, :PROJECT_NAME, :PROJECT_DUE_DATE, :PROJECT_STATUS)" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT &quot;PROJECT_ID&quot;, &quot;PROJECT_START_DATE&quot;, &quot;PROJECT_NAME&quot;, &quot;PROJECT_DUE_DATE&quot;, &quot;PROJECT_STATUS&quot; FROM &quot;PROJECTS&quot;" UpdateCommand="UPDATE &quot;PROJECTS&quot; SET &quot;PROJECT_START_DATE&quot; = :PROJECT_START_DATE, &quot;PROJECT_NAME&quot; = :PROJECT_NAME, &quot;PROJECT_DUE_DATE&quot; = :PROJECT_DUE_DATE, &quot;PROJECT_STATUS&quot; = :PROJECT_STATUS WHERE &quot;PROJECT_ID&quot; = :PROJECT_ID"
+                OnInserted="SqlDataSource1_Inserted"
+        OnUpdated="SqlDataSource1_Updated"
+        OnDeleted="SqlDataSource1_Deleted">
         <DeleteParameters>
             <asp:Parameter Name="PROJECT_ID" Type="Decimal" />
         </DeleteParameters>
@@ -126,5 +129,18 @@
             <asp:Parameter Name="PROJECT_ID" Type="Decimal" />
         </UpdateParameters>
     </asp:SqlDataSource>
+     <script>
+     function showToast(message, type) {
+         Swal.fire({
+             toast: true,
+             position: 'top-end',
+             icon: type,
+             title: message,
+             showConfirmButton: false,
+             timer: 3000,
+             timerProgressBar: true
+         });
+     }
+     </script>
 </asp:Content>
 

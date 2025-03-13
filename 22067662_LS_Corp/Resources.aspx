@@ -91,7 +91,10 @@
             </Columns>
         </asp:GridView>
     </div>
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" DeleteCommand="DELETE FROM &quot;RESOURCES&quot; WHERE &quot;RESOURCE_ID&quot; = :RESOURCE_ID" InsertCommand="INSERT INTO &quot;RESOURCES&quot; (&quot;RESOURCE_ID&quot;, &quot;RESOURCE_NAME&quot;, &quot;RESOURCE_DESCRIPTION&quot;, &quot;RESOURCE_TYPE&quot;) VALUES (:RESOURCE_ID, :RESOURCE_NAME, :RESOURCE_DESCRIPTION, :RESOURCE_TYPE)" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT &quot;RESOURCE_ID&quot;, &quot;RESOURCE_NAME&quot;, &quot;RESOURCE_DESCRIPTION&quot;, &quot;RESOURCE_TYPE&quot; FROM &quot;RESOURCES&quot;" UpdateCommand="UPDATE &quot;RESOURCES&quot; SET &quot;RESOURCE_NAME&quot; = :RESOURCE_NAME, &quot;RESOURCE_DESCRIPTION&quot; = :RESOURCE_DESCRIPTION, &quot;RESOURCE_TYPE&quot; = :RESOURCE_TYPE WHERE &quot;RESOURCE_ID&quot; = :RESOURCE_ID">
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" DeleteCommand="DELETE FROM &quot;RESOURCES&quot; WHERE &quot;RESOURCE_ID&quot; = :RESOURCE_ID" InsertCommand="INSERT INTO &quot;RESOURCES&quot; (&quot;RESOURCE_ID&quot;, &quot;RESOURCE_NAME&quot;, &quot;RESOURCE_DESCRIPTION&quot;, &quot;RESOURCE_TYPE&quot;) VALUES (:RESOURCE_ID, :RESOURCE_NAME, :RESOURCE_DESCRIPTION, :RESOURCE_TYPE)" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT &quot;RESOURCE_ID&quot;, &quot;RESOURCE_NAME&quot;, &quot;RESOURCE_DESCRIPTION&quot;, &quot;RESOURCE_TYPE&quot; FROM &quot;RESOURCES&quot;" UpdateCommand="UPDATE &quot;RESOURCES&quot; SET &quot;RESOURCE_NAME&quot; = :RESOURCE_NAME, &quot;RESOURCE_DESCRIPTION&quot; = :RESOURCE_DESCRIPTION, &quot;RESOURCE_TYPE&quot; = :RESOURCE_TYPE WHERE &quot;RESOURCE_ID&quot; = :RESOURCE_ID"
+            OnInserted="SqlDataSource1_Inserted"
+OnUpdated="SqlDataSource1_Updated"
+OnDeleted="SqlDataSource1_Deleted">
         <DeleteParameters>
             <asp:Parameter Name="RESOURCE_ID" Type="Decimal" />
         </DeleteParameters>
@@ -109,4 +112,17 @@
         </UpdateParameters>
     </asp:SqlDataSource>
 
+     <script>
+     function showToast(message, type) {
+         Swal.fire({
+             toast: true,
+             position: 'top-end',
+             icon: type,
+             title: message,
+             showConfirmButton: false,
+             timer: 3000,
+             timerProgressBar: true
+         });
+     }
+     </script>
 </asp:Content>

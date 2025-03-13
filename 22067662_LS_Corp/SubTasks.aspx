@@ -125,7 +125,14 @@
             </Columns>
         </asp:GridView>
     </div>
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" DeleteCommand="DELETE FROM &quot;SUBTASKS&quot; WHERE &quot;SUBTASK_ID&quot; = :SUBTASK_ID" InsertCommand="INSERT INTO &quot;SUBTASKS&quot; (&quot;SUBTASK_ID&quot;, &quot;SUBTASK_START_DATE&quot;, &quot;SUBTASK_NAME&quot;, &quot;SUBTASK_DUE_DATE&quot;, &quot;SUBTASK_STATUS&quot;, &quot;TASK_ID&quot;) VALUES (:SUBTASK_ID, :SUBTASK_START_DATE, :SUBTASK_NAME, :SUBTASK_DUE_DATE, :SUBTASK_STATUS, :TASK_ID)" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT &quot;SUBTASK_ID&quot;, &quot;SUBTASK_START_DATE&quot;, &quot;SUBTASK_NAME&quot;, &quot;SUBTASK_DUE_DATE&quot;, &quot;SUBTASK_STATUS&quot;, &quot;TASK_ID&quot; FROM &quot;SUBTASKS&quot;" UpdateCommand="UPDATE &quot;SUBTASKS&quot; SET &quot;SUBTASK_START_DATE&quot; = :SUBTASK_START_DATE, &quot;SUBTASK_NAME&quot; = :SUBTASK_NAME, &quot;SUBTASK_DUE_DATE&quot; = :SUBTASK_DUE_DATE, &quot;SUBTASK_STATUS&quot; = :SUBTASK_STATUS, &quot;TASK_ID&quot; = :TASK_ID WHERE &quot;SUBTASK_ID&quot; = :SUBTASK_ID">
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" DeleteCommand="DELETE FROM &quot;SUBTASKS&quot; WHERE &quot;SUBTASK_ID&quot; = :SUBTASK_ID" 
+        InsertCommand="INSERT INTO &quot;SUBTASKS&quot; (&quot;SUBTASK_ID&quot;, &quot;SUBTASK_START_DATE&quot;, &quot;SUBTASK_NAME&quot;, &quot;SUBTASK_DUE_DATE&quot;, &quot;SUBTASK_STATUS&quot;, &quot;TASK_ID&quot;) VALUES (:SUBTASK_ID, :SUBTASK_START_DATE, :SUBTASK_NAME, :SUBTASK_DUE_DATE, :SUBTASK_STATUS, :TASK_ID)" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" 
+        SelectCommand="SELECT &quot;SUBTASK_ID&quot;, &quot;SUBTASK_START_DATE&quot;, &quot;SUBTASK_NAME&quot;, &quot;SUBTASK_DUE_DATE&quot;, &quot;SUBTASK_STATUS&quot;, &quot;TASK_ID&quot; FROM &quot;SUBTASKS&quot;" 
+        UpdateCommand="UPDATE &quot;SUBTASKS&quot; SET &quot;SUBTASK_START_DATE&quot; = :SUBTASK_START_DATE, &quot;SUBTASK_NAME&quot; = :SUBTASK_NAME, &quot;SUBTASK_DUE_DATE&quot; = :SUBTASK_DUE_DATE, &quot;SUBTASK_STATUS&quot; = :SUBTASK_STATUS, &quot;TASK_ID&quot; = :TASK_ID WHERE &quot;SUBTASK_ID&quot; = :SUBTASK_ID"
+        OnInserted="SqlDataSource1_Inserted"
+        OnUpdated="SqlDataSource1_Updated"
+        OnDeleted="SqlDataSource1_Deleted"
+        >
         <DeleteParameters>
             <asp:Parameter Name="SUBTASK_ID" Type="Decimal" />
         </DeleteParameters>
@@ -147,5 +154,20 @@
         </UpdateParameters>
     </asp:SqlDataSource>
 
-    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT &quot;TASK_ID&quot;, &quot;TASK_NAME&quot; FROM &quot;TASKS&quot;"></asp:SqlDataSource>
+    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT &quot;TASK_ID&quot;, &quot;TASK_NAME&quot; FROM &quot;TASKS&quot;"
+        ></asp:SqlDataSource>
+
+     <script>
+     function showToast(message, type) {
+         Swal.fire({
+             toast: true,
+             position: 'top-end',
+             icon: type,
+             title: message,
+             showConfirmButton: false,
+             timer: 3000,
+             timerProgressBar: true
+         });
+     }
+     </script>
 </asp:Content>

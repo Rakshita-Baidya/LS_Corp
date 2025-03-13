@@ -109,7 +109,13 @@
         </asp:GridView>
     </div>
 
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" DeleteCommand="DELETE FROM &quot;USER_PROJECT_TASK&quot; WHERE &quot;USER_PROJECT_TASK_ID&quot; = :USER_PROJECT_TASK_ID" InsertCommand="INSERT INTO &quot;USER_PROJECT_TASK&quot; (&quot;USER_PROJECT_TASK_ID&quot;, &quot;TASK_ID&quot;, &quot;USER_ID&quot;, &quot;PROJECT_ID&quot;) VALUES (:USER_PROJECT_TASK_ID, :TASK_ID, :USER_ID, :PROJECT_ID)" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT &quot;USER_PROJECT_TASK_ID&quot;, &quot;TASK_ID&quot;, &quot;USER_ID&quot;, &quot;PROJECT_ID&quot; FROM &quot;USER_PROJECT_TASK&quot;" UpdateCommand="UPDATE &quot;USER_PROJECT_TASK&quot; SET &quot;TASK_ID&quot; = :TASK_ID, &quot;USER_ID&quot; = :USER_ID, &quot;PROJECT_ID&quot; = :PROJECT_ID WHERE &quot;USER_PROJECT_TASK_ID&quot; = :USER_PROJECT_TASK_ID">
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" DeleteCommand="DELETE FROM &quot;USER_PROJECT_TASK&quot; WHERE &quot;USER_PROJECT_TASK_ID&quot; = :USER_PROJECT_TASK_ID"
+        InsertCommand="INSERT INTO &quot;USER_PROJECT_TASK&quot; (&quot;USER_PROJECT_TASK_ID&quot;, &quot;TASK_ID&quot;, &quot;USER_ID&quot;, &quot;PROJECT_ID&quot;) VALUES (:USER_PROJECT_TASK_ID, :TASK_ID, :USER_ID, :PROJECT_ID)"
+        ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT &quot;USER_PROJECT_TASK_ID&quot;, &quot;TASK_ID&quot;, &quot;USER_ID&quot;, &quot;PROJECT_ID&quot; FROM &quot;USER_PROJECT_TASK&quot;"
+        UpdateCommand="UPDATE &quot;USER_PROJECT_TASK&quot; SET &quot;TASK_ID&quot; = :TASK_ID, &quot;USER_ID&quot; = :USER_ID, &quot;PROJECT_ID&quot; = :PROJECT_ID WHERE &quot;USER_PROJECT_TASK_ID&quot; = :USER_PROJECT_TASK_ID"
+        OnInserted="SqlDataSource1_Inserted"
+        OnUpdated="SqlDataSource1_Updated"
+        OnDeleted="SqlDataSource1_Deleted">
         <DeleteParameters>
             <asp:Parameter Name="USER_PROJECT_TASK_ID" Type="Decimal" />
         </DeleteParameters>
@@ -130,4 +136,18 @@
     <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT &quot;USER_ID&quot;, &quot;USER_NAME&quot; FROM &quot;USERS&quot;"></asp:SqlDataSource>
     <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT &quot;PROJECT_ID&quot;, &quot;PROJECT_NAME&quot; FROM &quot;PROJECTS&quot;"></asp:SqlDataSource>
     <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT &quot;TASK_ID&quot;, &quot;TASK_NAME&quot; FROM &quot;TASKS&quot;"></asp:SqlDataSource>
+
+    <script>
+        function showToast(message, type) {
+            Swal.fire({
+                toast: true,
+                position: 'top-end',
+                icon: type,
+                title: message,
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true
+            });
+        }
+    </script>
 </asp:Content>

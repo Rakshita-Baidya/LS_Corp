@@ -118,7 +118,13 @@
         </asp:GridView>
     </div>
 
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" DeleteCommand="DELETE FROM &quot;COMMENTS&quot; WHERE &quot;COMMENT_ID&quot; = :COMMENT_ID" InsertCommand="INSERT INTO &quot;COMMENTS&quot; (&quot;COMMENT_ID&quot;, &quot;COMMENT_MESSAGE&quot;, &quot;COMMENT_DATETIME&quot;, &quot;USER_ID&quot;, &quot;TASK_ID&quot;) VALUES (:COMMENT_ID, :COMMENT_MESSAGE, :COMMENT_DATETIME, :USER_ID, :TASK_ID)" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT &quot;COMMENT_ID&quot;, &quot;COMMENT_MESSAGE&quot;, &quot;COMMENT_DATETIME&quot;, &quot;USER_ID&quot;, &quot;TASK_ID&quot; FROM &quot;COMMENTS&quot;" UpdateCommand="UPDATE &quot;COMMENTS&quot; SET &quot;COMMENT_MESSAGE&quot; = :COMMENT_MESSAGE, &quot;COMMENT_DATETIME&quot; = :COMMENT_DATETIME, &quot;USER_ID&quot; = :USER_ID, &quot;TASK_ID&quot; = :TASK_ID WHERE &quot;COMMENT_ID&quot; = :COMMENT_ID">
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" DeleteCommand="DELETE FROM &quot;COMMENTS&quot; WHERE &quot;COMMENT_ID&quot; = :COMMENT_ID" 
+        InsertCommand="INSERT INTO &quot;COMMENTS&quot; (&quot;COMMENT_ID&quot;, &quot;COMMENT_MESSAGE&quot;, &quot;COMMENT_DATETIME&quot;, &quot;USER_ID&quot;, &quot;TASK_ID&quot;) VALUES (:COMMENT_ID, :COMMENT_MESSAGE, :COMMENT_DATETIME, :USER_ID, :TASK_ID)" 
+        ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT &quot;COMMENT_ID&quot;, &quot;COMMENT_MESSAGE&quot;, &quot;COMMENT_DATETIME&quot;, &quot;USER_ID&quot;, &quot;TASK_ID&quot; FROM &quot;COMMENTS&quot;" 
+        UpdateCommand="UPDATE &quot;COMMENTS&quot; SET &quot;COMMENT_MESSAGE&quot; = :COMMENT_MESSAGE, &quot;COMMENT_DATETIME&quot; = :COMMENT_DATETIME, &quot;USER_ID&quot; = :USER_ID, &quot;TASK_ID&quot; = :TASK_ID WHERE &quot;COMMENT_ID&quot; = :COMMENT_ID"
+        OnInserted="SqlDataSource1_Inserted"
+        OnUpdated="SqlDataSource1_Updated"
+        OnDeleted="SqlDataSource1_Deleted">
         <DeleteParameters>
             <asp:Parameter Name="COMMENT_ID" Type="Decimal" />
         </DeleteParameters>
@@ -145,4 +151,18 @@
     <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>"
         ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>"
         SelectCommand="SELECT &quot;USER_ID&quot;, &quot;USER_NAME&quot; FROM &quot;USERS&quot;"></asp:SqlDataSource>
+
+     <script>
+     function showToast(message, type) {
+         Swal.fire({
+             toast: true,
+             position: 'top-end',
+             icon: type,
+             title: message,
+             showConfirmButton: false,
+             timer: 3000,
+             timerProgressBar: true
+         });
+     }
+     </script>
 </asp:Content>

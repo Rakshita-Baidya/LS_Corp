@@ -134,8 +134,14 @@
             <RowStyle CssClass="bg-white text-md text-gray-900 hover:bg-gray-50"></RowStyle>
         </asp:GridView>
     </div>
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" DeleteCommand="DELETE FROM &quot;MILESTONES&quot; WHERE &quot;MILESTONE_ID&quot; = :MILESTONE_ID" InsertCommand="INSERT INTO &quot;MILESTONES&quot; (&quot;MILESTONE_ID&quot;, &quot;PROJECT_ID&quot;, &quot;MILESTONE_NAME&quot;, &quot;MILESTONE_DATE&quot;, &quot;MILESTONE_STATUS&quot;) VALUES (:MILESTONE_ID, :PROJECT_ID, :MILESTONE_NAME, :MILESTONE_DATE, :MILESTONE_STATUS)" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>"
-        SelectCommand="SELECT &quot;MILESTONE_ID&quot;, &quot;PROJECT_ID&quot;, &quot;MILESTONE_NAME&quot;, &quot;MILESTONE_DATE&quot;, &quot;MILESTONE_STATUS&quot; FROM &quot;MILESTONES&quot; WHERE (&quot;PROJECT_ID&quot; = :PROJECT_ID)" UpdateCommand="UPDATE &quot;MILESTONES&quot; SET &quot;PROJECT_ID&quot; = :PROJECT_ID, &quot;MILESTONE_NAME&quot; = :MILESTONE_NAME, &quot;MILESTONE_DATE&quot; = :MILESTONE_DATE, &quot;MILESTONE_STATUS&quot; = :MILESTONE_STATUS WHERE &quot;MILESTONE_ID&quot; = :MILESTONE_ID">
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
+        DeleteCommand="DELETE FROM &quot;MILESTONES&quot; WHERE &quot;MILESTONE_ID&quot; = :MILESTONE_ID" 
+        InsertCommand="INSERT INTO &quot;MILESTONES&quot; (&quot;MILESTONE_ID&quot;, &quot;PROJECT_ID&quot;, &quot;MILESTONE_NAME&quot;, &quot;MILESTONE_DATE&quot;, &quot;MILESTONE_STATUS&quot;) VALUES (:MILESTONE_ID, :PROJECT_ID, :MILESTONE_NAME, :MILESTONE_DATE, :MILESTONE_STATUS)" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>"
+        SelectCommand="SELECT &quot;MILESTONE_ID&quot;, &quot;PROJECT_ID&quot;, &quot;MILESTONE_NAME&quot;, &quot;MILESTONE_DATE&quot;, &quot;MILESTONE_STATUS&quot; FROM &quot;MILESTONES&quot; WHERE (&quot;PROJECT_ID&quot; = :PROJECT_ID)" 
+        UpdateCommand="UPDATE &quot;MILESTONES&quot; SET &quot;PROJECT_ID&quot; = :PROJECT_ID, &quot;MILESTONE_NAME&quot; = :MILESTONE_NAME, &quot;MILESTONE_DATE&quot; = :MILESTONE_DATE, &quot;MILESTONE_STATUS&quot; = :MILESTONE_STATUS WHERE &quot;MILESTONE_ID&quot; = :MILESTONE_ID"
+                OnInserted="SqlDataSource1_Inserted"
+        OnUpdated="SqlDataSource1_Updated"
+        OnDeleted="SqlDataSource1_Deleted">
         <DeleteParameters>
             <asp:Parameter Name="MILESTONE_ID" Type="Decimal" />
         </DeleteParameters>
@@ -159,4 +165,18 @@
     </asp:SqlDataSource>
 
     <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" OnSelecting="SqlDataSource2_Selecting" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT &quot;PROJECT_ID&quot;, &quot;PROJECT_NAME&quot; FROM &quot;PROJECTS&quot;"></asp:SqlDataSource>
+
+     <script>
+         function showToast(message, type) {
+             Swal.fire({
+                 toast: true,
+                 position: 'top-end',
+                 icon: type,
+                 title: message,
+                 showConfirmButton: false,
+                 timer: 3000,
+                 timerProgressBar: true
+             });
+         }
+     </script>
 </asp:Content>

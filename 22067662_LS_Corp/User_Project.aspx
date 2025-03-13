@@ -111,7 +111,13 @@
             </Columns>
         </asp:GridView>
     </div>
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" DeleteCommand="DELETE FROM &quot;USER_PROJECT&quot; WHERE &quot;USER_PROJECT_ID&quot; = :USER_PROJECT_ID" InsertCommand="INSERT INTO &quot;USER_PROJECT&quot; (&quot;USER_PROJECT_ID&quot;, &quot;PROJECT_ID&quot;, &quot;USER_ID&quot;) VALUES (:USER_PROJECT_ID, :PROJECT_ID, :USER_ID)" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT &quot;USER_PROJECT_ID&quot;, &quot;PROJECT_ID&quot;, &quot;USER_ID&quot; FROM &quot;USER_PROJECT&quot; WHERE (&quot;USER_ID&quot; = :USER_ID)" UpdateCommand="UPDATE &quot;USER_PROJECT&quot; SET &quot;PROJECT_ID&quot; = :PROJECT_ID, &quot;USER_ID&quot; = :USER_ID WHERE &quot;USER_PROJECT_ID&quot; = :USER_PROJECT_ID">
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" DeleteCommand="DELETE FROM &quot;USER_PROJECT&quot; WHERE &quot;USER_PROJECT_ID&quot; = :USER_PROJECT_ID" 
+        InsertCommand="INSERT INTO &quot;USER_PROJECT&quot; (&quot;USER_PROJECT_ID&quot;, &quot;PROJECT_ID&quot;, &quot;USER_ID&quot;) VALUES (:USER_PROJECT_ID, :PROJECT_ID, :USER_ID)" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" 
+        SelectCommand="SELECT &quot;USER_PROJECT_ID&quot;, &quot;PROJECT_ID&quot;, &quot;USER_ID&quot; FROM &quot;USER_PROJECT&quot; WHERE (&quot;USER_ID&quot; = :USER_ID)" 
+        UpdateCommand="UPDATE &quot;USER_PROJECT&quot; SET &quot;PROJECT_ID&quot; = :PROJECT_ID, &quot;USER_ID&quot; = :USER_ID WHERE &quot;USER_PROJECT_ID&quot; = :USER_PROJECT_ID"
+        OnInserted="SqlDataSource1_Inserted"
+        OnUpdated="SqlDataSource1_Updated"
+        OnDeleted="SqlDataSource1_Deleted">
         <DeleteParameters>
             <asp:Parameter Name="USER_PROJECT_ID" Type="Decimal" />
         </DeleteParameters>
@@ -132,4 +138,18 @@
 
     <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT &quot;USER_ID&quot;, &quot;USER_NAME&quot; FROM &quot;USERS&quot;"></asp:SqlDataSource>
     <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT PROJECT_ID, PROJECT_NAME, TO_CHAR(PROJECT_START_DATE, 'DD Month YYYY') AS PROJECT_START_DATE, TO_CHAR(PROJECT_DUE_DATE, 'DD Month YYYY') AS PROJECT_DUE_DATE, PROJECT_STATUS FROM PROJECTS"></asp:SqlDataSource>
+
+     <script>
+     function showToast(message, type) {
+         Swal.fire({
+             toast: true,
+             position: 'top-end',
+             icon: type,
+             title: message,
+             showConfirmButton: false,
+             timer: 3000,
+             timerProgressBar: true
+         });
+     }
+     </script>
 </asp:Content>
