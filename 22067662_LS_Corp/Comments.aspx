@@ -43,6 +43,19 @@
         </ItemTemplate>
     </asp:FormView>
 
+    <div class="mb-6 space-x-4 flex">
+        <div>
+            <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True" CssClass="py-1 px-2 max-w-48 border-gray-500 rounded border shadow-sm focus:border-[#B54555] focus:ring-[#B54555]">
+                <asp:ListItem Text="All Users" Value="" />
+            </asp:DropDownList>
+        </div>
+        <div>
+            <asp:DropDownList ID="DropDownList2" runat="server" AutoPostBack="True" CssClass="py-1 px-2 max-w-48 border-gray-500 rounded border shadow-sm focus:border-[#B54555] focus:ring-[#B54555]">
+                <asp:ListItem Text="All Tasks" Value="" />
+            </asp:DropDownList>
+        </div>
+    </div>
+
     <div class="p-6 mb-8 overflow-x-auto rounded-lg border-2 border-[#6B1F29] shadow-lg">
         <asp:GridView ID="GridView1" runat="server" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="COMMENT_ID" DataSourceID="SqlDataSource1" CssClass="divide-gray-200 w-full divide-y truncate text-center"
             HeaderStyle-CssClass="bg-[#F5E6E8] text-lg"
@@ -118,9 +131,10 @@
         </asp:GridView>
     </div>
 
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" DeleteCommand="DELETE FROM &quot;COMMENTS&quot; WHERE &quot;COMMENT_ID&quot; = :COMMENT_ID" 
-        InsertCommand="INSERT INTO &quot;COMMENTS&quot; (&quot;COMMENT_ID&quot;, &quot;COMMENT_MESSAGE&quot;, &quot;COMMENT_DATETIME&quot;, &quot;USER_ID&quot;, &quot;TASK_ID&quot;) VALUES (:COMMENT_ID, :COMMENT_MESSAGE, :COMMENT_DATETIME, :USER_ID, :TASK_ID)" 
-        ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT &quot;COMMENT_ID&quot;, &quot;COMMENT_MESSAGE&quot;, &quot;COMMENT_DATETIME&quot;, &quot;USER_ID&quot;, &quot;TASK_ID&quot; FROM &quot;COMMENTS&quot;" 
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" DeleteCommand="DELETE FROM &quot;COMMENTS&quot; WHERE &quot;COMMENT_ID&quot; = :COMMENT_ID"
+        InsertCommand="INSERT INTO &quot;COMMENTS&quot; (&quot;COMMENT_ID&quot;, &quot;COMMENT_MESSAGE&quot;, &quot;COMMENT_DATETIME&quot;, &quot;USER_ID&quot;, &quot;TASK_ID&quot;) VALUES (:COMMENT_ID, :COMMENT_MESSAGE, :COMMENT_DATETIME, :USER_ID, :TASK_ID)"
+        ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" 
+        SelectCommand="SELECT &quot;COMMENT_ID&quot;, &quot;COMMENT_MESSAGE&quot;, &quot;COMMENT_DATETIME&quot;, &quot;USER_ID&quot;, &quot;TASK_ID&quot; FROM &quot;COMMENTS&quot; where (:USER_ID = -1 OR USER_ID = :USER_ID) AND (:TASK_ID = -1 OR TASK_ID = :TASK_ID)"
         UpdateCommand="UPDATE &quot;COMMENTS&quot; SET &quot;COMMENT_MESSAGE&quot; = :COMMENT_MESSAGE, &quot;COMMENT_DATETIME&quot; = :COMMENT_DATETIME, &quot;USER_ID&quot; = :USER_ID, &quot;TASK_ID&quot; = :TASK_ID WHERE &quot;COMMENT_ID&quot; = :COMMENT_ID"
         OnInserted="SqlDataSource1_Inserted"
         OnUpdated="SqlDataSource1_Updated"
@@ -135,6 +149,10 @@
             <asp:Parameter Name="USER_ID" Type="Decimal" />
             <asp:Parameter Name="TASK_ID" Type="Decimal" />
         </InsertParameters>
+        <SelectParameters>
+            <asp:ControlParameter ControlID="DropDownList1" DefaultValue="-1" Name="USER_ID" PropertyName="SelectedValue" />
+            <asp:ControlParameter ControlID="DropDownList2" DefaultValue="-1" Name="TASK_ID" PropertyName="SelectedValue" />
+        </SelectParameters>
         <UpdateParameters>
             <asp:Parameter Name="COMMENT_MESSAGE" Type="String" />
             <asp:Parameter Name="COMMENT_DATETIME" Type="DateTime" />
@@ -152,17 +170,17 @@
         ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>"
         SelectCommand="SELECT &quot;USER_ID&quot;, &quot;USER_NAME&quot; FROM &quot;USERS&quot;"></asp:SqlDataSource>
 
-     <script>
-     function showToast(message, type) {
-         Swal.fire({
-             toast: true,
-             position: 'top-end',
-             icon: type,
-             title: message,
-             showConfirmButton: false,
-             timer: 3000,
-             timerProgressBar: true
-         });
-     }
-     </script>
+    <script>
+        function showToast(message, type) {
+            Swal.fire({
+                toast: true,
+                position: 'top-end',
+                icon: type,
+                title: message,
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true
+            });
+        }
+    </script>
 </asp:Content>

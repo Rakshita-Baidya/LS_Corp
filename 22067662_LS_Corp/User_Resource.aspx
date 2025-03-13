@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeBehind="Users.aspx.cs" Inherits="_22067662_LS_Corp.Users" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeBehind="User_Resource.aspx.cs" Inherits="_22067662_LS_Corp.User_Resource" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
     Assigned Resource Management
@@ -35,13 +35,37 @@
         <ItemTemplate>
             <asp:LinkButton ID="NewButton" runat="server" CausesValidation="False" CommandName="New" Text="Add Assignment" CssClass="text-white px-4 py-2 rounded bg-[#8E2937] hover:bg-[#6B1F29]" />
         </ItemTemplate>
+        <EmptyDataTemplate>
+            <asp:LinkButton ID="NewButton" runat="server" CausesValidation="False" CommandName="New" Text="Add Assignment" CssClass="text-white px-4 py-2 rounded bg-[#8E2937] hover:bg-[#6B1F29]" />
+        </EmptyDataTemplate>
     </asp:FormView>
+    <div class="mb-6 space-x-4 flex">
+        <div>
+            <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True"
+                CssClass="py-1 px-2 max-w-48 border-gray-500 rounded border shadow-sm focus:border-[#B54555] focus:ring-[#B54555]">
+                <asp:ListItem Text="All Users" Value="" />
+            </asp:DropDownList>
+        </div>
+        <div>
+            <asp:DropDownList ID="DropDownList2" runat="server" AutoPostBack="True"
+                CssClass="py-1 px-2 max-w-48 border-gray-500 rounded border shadow-sm focus:border-[#B54555] focus:ring-[#B54555]">
+                <asp:ListItem Text="All Tasks" Value="" />
+            </asp:DropDownList>
+        </div>
+        <div>
+            <asp:DropDownList ID="DropDownList3" runat="server" AutoPostBack="True"
+                CssClass="py-1 px-2 max-w-48 border-gray-500 rounded border shadow-sm focus:border-[#B54555] focus:ring-[#B54555]">
+                <asp:ListItem Text="All Resources" Value="" />
+            </asp:DropDownList>
+        </div>
+    </div>
 
     <div class="p-6 mb-8 rounded-lg border-2 border-[#6B1F29] shadow-lg">
         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="USER_TASK_RESOURCE_ID" DataSourceID="SqlDataSource1" CssClass="divide-gray-200 min-w-full divide-y truncate text-center"
             HeaderStyle-CssClass="bg-[#F5E6E8] text-lg"
             RowStyle-CssClass="bg-white text-md text-gray-900 hover:bg-gray-50"
-            AlternatingRowStyle-CssClass="bg-gray-50 hover:bg-gray-100" AllowPaging="True" AllowSorting="True" PageSize="6">
+            AlternatingRowStyle-CssClass="bg-gray-50 hover:bg-gray-100" AllowPaging="True" AllowSorting="True" PageSize="6"
+            EmptyDataText="No assigned resource found" EmptyDataRowStyle-CssClass="text-gray-700 py-4 text-lg">
             <PagerSettings Mode="NextPrevious"
                 PreviousPageImageUrl="~/Images/prev.svg"
                 PreviousPageText="Prev"
@@ -109,11 +133,13 @@
         </asp:GridView>
     </div>
 
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" DeleteCommand="DELETE FROM &quot;USER_TASK_RESOURCE&quot; WHERE &quot;USER_TASK_RESOURCE_ID&quot; = :USER_TASK_RESOURCE_ID" 
-        InsertCommand="INSERT INTO &quot;USER_TASK_RESOURCE&quot; (&quot;USER_TASK_RESOURCE_ID&quot;, &quot;USER_ID&quot;, &quot;TASK_ID&quot;, &quot;RESOURCE_ID&quot;) VALUES (:USER_TASK_RESOURCE_ID, :USER_ID, :TASK_ID, :RESOURCE_ID)" 
-        ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT &quot;USER_TASK_RESOURCE_ID&quot;, &quot;USER_ID&quot;, &quot;TASK_ID&quot;, &quot;RESOURCE_ID&quot; FROM &quot;USER_TASK_RESOURCE&quot; ORDER BY &quot;USER_TASK_RESOURCE_ID&quot;" 
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
+        DeleteCommand="DELETE FROM &quot;USER_TASK_RESOURCE&quot; WHERE &quot;USER_TASK_RESOURCE_ID&quot; = :USER_TASK_RESOURCE_ID"
+        InsertCommand="INSERT INTO &quot;USER_TASK_RESOURCE&quot; (&quot;USER_TASK_RESOURCE_ID&quot;, &quot;USER_ID&quot;, &quot;TASK_ID&quot;, &quot;RESOURCE_ID&quot;) VALUES (:USER_TASK_RESOURCE_ID, :USER_ID, :TASK_ID, :RESOURCE_ID)"
+        ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" 
+        SelectCommand="SELECT &quot;USER_TASK_RESOURCE_ID&quot;, &quot;USER_ID&quot;, &quot;TASK_ID&quot;, &quot;RESOURCE_ID&quot; FROM &quot;USER_TASK_RESOURCE&quot; where (:USER_ID = -1 OR USER_ID = :USER_ID) and (:TASK_ID = -1 OR TASK_ID = :TASK_ID) and (:RESOURCE_ID = -1 OR RESOURCE_ID = :RESOURCE_ID)"
         UpdateCommand="UPDATE &quot;USER_TASK_RESOURCE&quot; SET &quot;USER_ID&quot; = :USER_ID, &quot;TASK_ID&quot; = :TASK_ID, &quot;RESOURCE_ID&quot; = :RESOURCE_ID WHERE &quot;USER_TASK_RESOURCE_ID&quot; = :USER_TASK_RESOURCE_ID"
-                OnInserted="SqlDataSource1_Inserted"
+        OnInserted="SqlDataSource1_Inserted"
         OnUpdated="SqlDataSource1_Updated"
         OnDeleted="SqlDataSource1_Deleted">
         <DeleteParameters>
@@ -125,6 +151,11 @@
             <asp:Parameter Name="TASK_ID" Type="Decimal" />
             <asp:Parameter Name="RESOURCE_ID" Type="Decimal" />
         </InsertParameters>
+        <SelectParameters>
+            <asp:ControlParameter ControlID="DropDownList1" DefaultValue="-1" Name="USER_ID" PropertyName="SelectedValue" />
+            <asp:ControlParameter ControlID="DropDownList2" DefaultValue="-1" Name="TASK_ID" PropertyName="SelectedValue" />
+            <asp:ControlParameter ControlID="DropDownList3" DefaultValue="-1" Name="RESOURCE_ID" PropertyName="SelectedValue" />
+        </SelectParameters>
         <UpdateParameters>
             <asp:Parameter Name="USER_ID" Type="Decimal" />
             <asp:Parameter Name="TASK_ID" Type="Decimal" />
@@ -136,17 +167,17 @@
     <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT &quot;TASK_ID&quot;, &quot;TASK_NAME&quot; FROM &quot;TASKS&quot;"></asp:SqlDataSource>
     <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT &quot;RESOURCE_NAME&quot;, &quot;RESOURCE_ID&quot; FROM &quot;RESOURCES&quot;"></asp:SqlDataSource>
 
-     <script>
-     function showToast(message, type) {
-         Swal.fire({
-             toast: true,
-             position: 'top-end',
-             icon: type,
-             title: message,
-             showConfirmButton: false,
-             timer: 3000,
-             timerProgressBar: true
-         });
-     }
-     </script>
+    <script>
+        function showToast(message, type) {
+            Swal.fire({
+                toast: true,
+                position: 'top-end',
+                icon: type,
+                title: message,
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true
+            });
+        }
+    </script>
 </asp:Content>
