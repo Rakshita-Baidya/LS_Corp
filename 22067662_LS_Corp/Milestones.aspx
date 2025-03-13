@@ -12,39 +12,41 @@
             <div class="gap-4 p-6 grid grid-cols-1 rounded border-2 border-[#6B1F29]">
                 <div class="space-y-2">
                     <label class="text-gray-700 block text-sm font-medium">Milestone ID:</label>
-                    <asp:TextBox ID="MILESTONE_IDTextBox" runat="server" Text='<%# Bind("MILESTONE_ID") %>' CssClass="w-full rounded-sm py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
+                    <asp:TextBox ID="MILESTONE_IDTextBox" runat="server" Text='<%# Bind("MILESTONE_ID") %>' CssClass="w-full rounded py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
                 </div>
                 <div class="space-y-2">
                     <label class="text-gray-700 block text-sm font-medium">Project:</label>
-                    <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource2" DataTextField="PROJECT_NAME" DataValueField="PROJECT_ID" SelectedValue='<%# Bind("PROJECT_ID") %>' CssClass="w-full rounded-sm py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
+                    <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource2" DataTextField="PROJECT_NAME" DataValueField="PROJECT_ID" SelectedValue='<%# Bind("PROJECT_ID") %>' 
+                        CssClass="w-full rounded py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
                 </div>
                 <div class="space-y-2">
                     <label class="text-gray-700 block text-sm font-medium">Name:</label>
-                    <asp:TextBox ID="MILESTONE_NAMETextBox" runat="server" Text='<%# Bind("MILESTONE_NAME") %>' CssClass="w-full rounded-sm py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
+                    <asp:TextBox ID="MILESTONE_NAMETextBox" runat="server" Text='<%# Bind("MILESTONE_NAME") %>' CssClass="w-full rounded py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
                 </div>
                 <div class="space-y-2">
                     <label class="text-gray-700 block text-sm font-medium">Date:</label>
-                    <asp:TextBox ID="MILESTONE_DATETextBox" runat="server" TextMode="Date" Text='<%# Bind("MILESTONE_DATE", "{0:yyyy-MM-dd}") %>' CssClass="w-full rounded-sm py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
+                    <asp:TextBox ID="MILESTONE_DATETextBox" runat="server" TextMode="Date" Text='<%# Bind("MILESTONE_DATE", "{0:yyyy-MM-dd}") %>' CssClass="w-full rounded py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
                 </div>
                 <div class="space-y-2">
                     <label class="text-gray-700 block text-sm font-medium">Status:</label>
-                    <asp:TextBox ID="MILESTONE_STATUSTextBox" runat="server" Text='<%# Bind("MILESTONE_STATUS") %>' CssClass="w-full rounded-sm py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
+                    <asp:TextBox ID="MILESTONE_STATUSTextBox" runat="server" Text='<%# Bind("MILESTONE_STATUS") %>' CssClass="w-full rounded py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
                 </div>
                 <div class="space-x-4 pt-4 flex">
-                    <asp:LinkButton ID="InsertButton" runat="server" CausesValidation="True" CommandName="Insert" Text="Insert" CssClass="text-white px-4 py-2 rounded-sm bg-[#8E2937] hover:bg-[#6B1F29]" />
-                    <asp:LinkButton ID="InsertCancelButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" CssClass="bg-gray-200 text-gray-700 px-4 py-2 rounded-sm hover:bg-gray-300" />
+                    <asp:LinkButton ID="InsertButton" runat="server" CausesValidation="True" CommandName="Insert" Text="Insert" CssClass="text-white px-4 py-2 rounded bg-[#8E2937] hover:bg-[#6B1F29]" />
+                    <asp:LinkButton ID="InsertCancelButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" CssClass="bg-gray-200 text-gray-700 px-4 py-2 rounded hover:bg-gray-300" />
                 </div>
             </div>
         </InsertItemTemplate>
         <ItemTemplate>
-            <asp:LinkButton ID="NewButton" runat="server" CausesValidation="False" CommandName="New" Text="Add Milestone" CssClass="text-white px-4 py-2 rounded-sm bg-[#8E2937] hover:bg-[#6B1F29]" />
+            <asp:LinkButton ID="NewButton" runat="server" CausesValidation="False" CommandName="New" Text="Add Milestone" CssClass="text-white px-4 py-2 rounded bg-[#8E2937] hover:bg-[#6B1F29]" />
         </ItemTemplate>
         <EmptyDataTemplate>
-            <asp:LinkButton ID="NewButton" runat="server" CausesValidation="False" CommandName="New" Text="Add Milestone" CssClass="text-white px-4 py-2 rounded-sm bg-[#8E2937] hover:bg-[#6B1F29]" />
+            <asp:LinkButton ID="NewButton" runat="server" CausesValidation="False" CommandName="New" Text="Add Milestone" CssClass="text-white px-4 py-2 rounded bg-[#8E2937] hover:bg-[#6B1F29]" />
         </EmptyDataTemplate>
     </asp:FormView>
     <div class="mb-6">
-        <asp:DropDownList ID="DropDownList3" runat="server" AutoPostBack="True" DataSourceID="SqlDataSource2" DataTextField="PROJECT_NAME" DataValueField="PROJECT_ID" CssClass="py-1 px-2 border-gray-500 border shadow-sm focus:border-[#B54555] focus:ring-[#B54555]">
+        <asp:DropDownList ID="DropDownList3" runat="server" AutoPostBack="True" DataSourceID="SqlDataSource2" DataTextField="PROJECT_NAME" DataValueField="PROJECT_ID" 
+            CssClass="py-1 px-2 border-gray-500 rounded border shadow-sm focus:border-[#B54555] focus:ring-[#B54555]">
         </asp:DropDownList>
     </div>
     <div class="p-6 mb-8 rounded-lg border-2 border-[#6B1F29] shadow-lg">
@@ -75,7 +77,7 @@
                         <asp:Label ID="LabelProject" runat="server" Text='<%# Eval("PROJECT_ID") %>' />
                     </ItemTemplate>
                     <EditItemTemplate>
-                        <asp:DropDownList ID="DropDownListProject" runat="server" DataSourceID="SqlDataSource2" DataTextField="PROJECT_NAME" DataValueField="PROJECT_ID" SelectedValue='<%# Bind("PROJECT_ID") %>' CssClass="w-full rounded-sm py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
+                        <asp:DropDownList ID="DropDownListProject" runat="server" DataSourceID="SqlDataSource2" DataTextField="PROJECT_NAME" DataValueField="PROJECT_ID" SelectedValue='<%# Bind("PROJECT_ID") %>' CssClass="w-full rounded py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
                     </EditItemTemplate>
                     <ItemStyle CssClass="px-6 py-4"></ItemStyle>
                 </asp:TemplateField>
@@ -89,7 +91,7 @@
                         <asp:Label ID="LabelName" runat="server" Text='<%# Eval("MILESTONE_NAME") %>' />
                     </ItemTemplate>
                     <EditItemTemplate>
-                        <asp:TextBox ID="TextBoxName" runat="server" Text='<%# Bind("MILESTONE_NAME") %>' CssClass="w-full rounded-sm py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
+                        <asp:TextBox ID="TextBoxName" runat="server" Text='<%# Bind("MILESTONE_NAME") %>' CssClass="w-full rounded py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
                     </EditItemTemplate>
 
                     <ItemStyle CssClass="px-6 py-4"></ItemStyle>
@@ -99,7 +101,7 @@
                         <asp:Label ID="LabelDate" runat="server" Text='<%# Eval("MILESTONE_DATE", "{0:dd MMMM, yyyy}") %>' />
                     </ItemTemplate>
                     <EditItemTemplate>
-                        <asp:TextBox ID="TextBoxDate" runat="server" TextMode="Date" Text='<%# Bind("MILESTONE_DATE", "{0:yyyy-MM-dd}") %>' CssClass="w-full rounded-sm py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
+                        <asp:TextBox ID="TextBoxDate" runat="server" TextMode="Date" Text='<%# Bind("MILESTONE_DATE", "{0:yyyy-MM-dd}") %>' CssClass="w-full rounded py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
                     </EditItemTemplate>
 
                     <ItemStyle CssClass="px-6 py-4"></ItemStyle>
@@ -109,7 +111,7 @@
                         <asp:Label ID="LabelStatus" runat="server" Text='<%# Eval("MILESTONE_STATUS") %>' />
                     </ItemTemplate>
                     <EditItemTemplate>
-                        <asp:TextBox ID="TextBoxStatus" runat="server" Text='<%# Bind("MILESTONE_STATUS") %>' CssClass="w-full rounded-sm py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
+                        <asp:TextBox ID="TextBoxStatus" runat="server" Text='<%# Bind("MILESTONE_STATUS") %>' CssClass="w-full rounded py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
                     </EditItemTemplate>
 
                     <ItemStyle CssClass="px-6 py-4"></ItemStyle>

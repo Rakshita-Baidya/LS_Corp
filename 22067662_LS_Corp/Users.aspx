@@ -10,32 +10,32 @@
             <div class="gap-4 p-6 grid grid-cols-1 rounded border-2 border-[#6B1F29]">
                 <div class="space-y-2">
                     <label class="text-gray-700 block text-sm font-medium">User ID:</label>
-                    <asp:TextBox ID="USER_IDTextBox" runat="server" Text='<%# Bind("USER_ID") %>' CssClass="w-full rounded-sm py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
+                    <asp:TextBox ID="USER_IDTextBox" runat="server" Text='<%# Bind("USER_ID") %>' CssClass="w-full rounded py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
                 </div>
                 <div class="space-y-2">
                     <label class="text-gray-700 block text-sm font-medium">Name:</label>
-                    <asp:TextBox ID="USER_NAMETextBox" runat="server" Text='<%# Bind("USER_NAME") %>' CssClass="w-full rounded-sm py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
+                    <asp:TextBox ID="USER_NAMETextBox" runat="server" Text='<%# Bind("USER_NAME") %>' CssClass="w-full rounded py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
                 </div>
                 <div class="space-y-2">
                     <label class="text-gray-700 block text-sm font-medium">Email:</label>
-                    <asp:TextBox ID="USER_EMAILTextBox" runat="server" Text='<%# Bind("USER_EMAIL") %>' CssClass="w-full rounded-sm py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
+                    <asp:TextBox ID="USER_EMAILTextBox" runat="server" Text='<%# Bind("USER_EMAIL") %>' CssClass="w-full rounded py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
                 </div>
                 <div class="space-y-2">
                     <label class="text-gray-700 block text-sm font-medium">Contact:</label>
-                    <asp:TextBox ID="USER_CONTACTTextBox" runat="server" Text='<%# Bind("USER_CONTACT") %>' CssClass="w-full rounded-sm py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
+                    <asp:TextBox ID="USER_CONTACTTextBox" runat="server" Text='<%# Bind("USER_CONTACT") %>' CssClass="w-full rounded py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
                 </div>
                 <div class="space-y-2">
                     <label class="text-gray-700 block text-sm font-medium">Position:</label>
-                    <asp:TextBox ID="USER_POSITIONTextBox" runat="server" Text='<%# Bind("USER_POSITION") %>' CssClass="w-full rounded-sm py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
+                    <asp:TextBox ID="USER_POSITIONTextBox" runat="server" Text='<%# Bind("USER_POSITION") %>' CssClass="w-full rounded py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
                 </div>
                 <div class="space-x-4 pt-4 flex">
-                    <asp:LinkButton ID="InsertButton" runat="server" CausesValidation="True" CommandName="Insert" Text="Insert" CssClass="text-white px-4 py-2 rounded-sm bg-[#8E2937] hover:bg-[#6B1F29]" />
-                    <asp:LinkButton ID="InsertCancelButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" CssClass="bg-gray-200 text-gray-700 px-4 py-2 rounded-sm hover:bg-gray-300" />
+                    <asp:LinkButton ID="InsertButton" runat="server" CausesValidation="True" CommandName="Insert" Text="Insert" CssClass="text-white px-4 py-2 rounded bg-[#8E2937] hover:bg-[#6B1F29]" />
+                    <asp:LinkButton ID="InsertCancelButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" CssClass="bg-gray-200 text-gray-700 px-4 py-2 rounded hover:bg-gray-300" />
                 </div>
             </div>
         </InsertItemTemplate>
         <ItemTemplate>
-            <asp:LinkButton ID="NewButton" runat="server" CausesValidation="False" CommandName="New" Text="Add User" CssClass="text-white px-4 py-2 rounded-sm bg-[#8E2937] hover:bg-[#6B1F29]" />
+            <asp:LinkButton ID="NewButton" runat="server" CausesValidation="False" CommandName="New" Text="Add User" CssClass="text-white px-4 py-2 rounded bg-[#8E2937] hover:bg-[#6B1F29]" />
         </ItemTemplate>
     </asp:FormView>
 
@@ -60,7 +60,7 @@
                         <asp:Label ID="LabelName" runat="server" Text='<%# Eval("USER_NAME") %>' />
                     </ItemTemplate>
                     <EditItemTemplate>
-                        <asp:TextBox ID="TextBoxName" runat="server" Text='<%# Bind("USER_NAME") %>' CssClass="w-full rounded-sm py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
+                        <asp:TextBox ID="TextBoxName" runat="server" Text='<%# Bind("USER_NAME") %>' CssClass="w-full rounded py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
                     </EditItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Email" SortExpression="USER_EMAIL" ItemStyle-CssClass="px-6 py-4 max-w-md truncate">
@@ -68,7 +68,7 @@
                         <asp:Label ID="LabelEmail" runat="server" Text='<%# Eval("USER_EMAIL") %>' />
                     </ItemTemplate>
                     <EditItemTemplate>
-                        <asp:TextBox ID="TextBoxEmail" runat="server" TextMode="Email" Text='<%# Bind("USER_EMAIL") %>' CssClass="w-full rounded-sm py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
+                        <asp:TextBox ID="TextBoxEmail" runat="server" TextMode="Email" Text='<%# Bind("USER_EMAIL") %>' CssClass="w-full rounded py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
                     </EditItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Contact" SortExpression="USER_CONTACT" ItemStyle-CssClass="px-6 py-4 max-w-xs truncate">
@@ -76,7 +76,7 @@
                         <asp:Label ID="LabelContact" runat="server" Text='<%# Eval("USER_CONTACT") %>' />
                     </ItemTemplate>
                     <EditItemTemplate>
-                        <asp:TextBox ID="TextBoxContact" runat="server" Text='<%# Bind("USER_CONTACT") %>' CssClass="w-full rounded-sm py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
+                        <asp:TextBox ID="TextBoxContact" runat="server" Text='<%# Bind("USER_CONTACT") %>' CssClass="w-full rounded py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
                     </EditItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Position" SortExpression="USER_POSITION" ItemStyle-CssClass="px-6 py-4 max-w-xs truncate">
@@ -84,7 +84,7 @@
                         <asp:Label ID="LabelPosition" runat="server" Text='<%# Eval("USER_POSITION") %>' />
                     </ItemTemplate>
                     <EditItemTemplate>
-                        <asp:TextBox ID="TextBoxPosition" runat="server" Text='<%# Bind("USER_POSITION") %>' CssClass="w-full rounded-sm py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
+                        <asp:TextBox ID="TextBoxPosition" runat="server" Text='<%# Bind("USER_POSITION") %>' CssClass="w-full rounded py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
                     </EditItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Actions" ItemStyle-CssClass="py-4 space-x-2 px-6 flex justify-center">

@@ -33,6 +33,15 @@ namespace _22067662_LS_Corp
         protected global::System.Web.UI.WebControls.DropDownList DropDownList8;
 
         /// <summary>
+        /// DropDownList9 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList DropDownList9;
+
+        /// <summary>
         /// GridView1 control.
         /// </summary>
         /// <remarks>

@@ -9,27 +9,27 @@
             <div class="gap-4 p-6 grid grid-cols-1 rounded border-2 border-[#6B1F29]">
                 <div class="space-y-2">
                     <label class="text-gray-700 block text-sm font-medium">Resource ID:</label>
-                    <asp:TextBox ID="RESOURCE_IDTextBox" runat="server" Text='<%# Bind("RESOURCE_ID") %>' CssClass="w-full rounded-sm py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
+                    <asp:TextBox ID="RESOURCE_IDTextBox" runat="server" Text='<%# Bind("RESOURCE_ID") %>' CssClass="w-full rounded py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
                 </div>
                 <div class="space-y-2">
                     <label class="text-gray-700 block text-sm font-medium">Name:</label>
-                    <asp:TextBox ID="RESOURCE_NAMETextBox" runat="server" Text='<%# Bind("RESOURCE_NAME") %>' CssClass="w-full rounded-sm py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
+                    <asp:TextBox ID="RESOURCE_NAMETextBox" runat="server" Text='<%# Bind("RESOURCE_NAME") %>' CssClass="w-full rounded py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
                 </div>
                 <div class="space-y-2">
                     <label class="text-gray-700 block text-sm font-medium">Description:</label>
-                    <asp:TextBox ID="RESOURCE_DESCRIPTIONTextBox" runat="server" Text='<%# Bind("RESOURCE_DESCRIPTION") %>' CssClass="w-full rounded-sm py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
+                    <asp:TextBox ID="RESOURCE_DESCRIPTIONTextBox" runat="server" Text='<%# Bind("RESOURCE_DESCRIPTION") %>' CssClass="w-full rounded py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
                 </div>
                 <div class="space-y-2">
                     <label class="text-gray-700 block text-sm font-medium">
                         Type:
-           <asp:TextBox ID="RESOURCE_TYPETextBox" runat="server" Text='<%# Bind("RESOURCE_TYPE") %>' CssClass="w-full rounded-sm py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
+           <asp:TextBox ID="RESOURCE_TYPETextBox" runat="server" Text='<%# Bind("RESOURCE_TYPE") %>' CssClass="w-full rounded py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
                 </div>
                 <div class="space-x-4 pt-4 flex">
-                    <asp:LinkButton ID="InsertButton" runat="server" CausesValidation="True" CommandName="Insert" Text="Insert" CssClass="text-white px-4 py-2 rounded-sm bg-[#8E2937] hover:bg-[#6B1F29]" />
-                    <asp:LinkButton ID="InsertCancelButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" CssClass="bg-gray-200 text-gray-700 px-4 py-2 rounded-sm hover:bg-gray-300" />
+                    <asp:LinkButton ID="InsertButton" runat="server" CausesValidation="True" CommandName="Insert" Text="Insert" CssClass="text-white px-4 py-2 rounded bg-[#8E2937] hover:bg-[#6B1F29]" />
+                    <asp:LinkButton ID="InsertCancelButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" CssClass="bg-gray-200 text-gray-700 px-4 py-2 rounded hover:bg-gray-300" />
         </InsertItemTemplate>
         <ItemTemplate>
-            <asp:LinkButton ID="NewButton" runat="server" CausesValidation="False" CommandName="New" Text="Add Resource" CssClass="text-white px-4 py-2 rounded-sm bg-[#8E2937] hover:bg-[#6B1F29]" />
+            <asp:LinkButton ID="NewButton" runat="server" CausesValidation="False" CommandName="New" Text="Add Resource" CssClass="text-white px-4 py-2 rounded bg-[#8E2937] hover:bg-[#6B1F29]" />
         </ItemTemplate>
     </asp:FormView>
     <div class="p-6 mb-8 rounded-lg border-2 border-[#6B1F29] shadow-lg">
@@ -54,7 +54,7 @@
                         <asp:Label ID="LabelName" runat="server" Text='<%# Eval("RESOURCE_NAME") %>' />
                     </ItemTemplate>
                     <EditItemTemplate>
-                        <asp:TextBox ID="TextBoxName" runat="server" Text='<%# Bind("RESOURCE_NAME") %>' CssClass="w-full rounded-sm py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
+                        <asp:TextBox ID="TextBoxName" runat="server" Text='<%# Bind("RESOURCE_NAME") %>' CssClass="w-full rounded py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
                     </EditItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Description" SortExpression="RESOURCE_DESCRIPTION" ItemStyle-CssClass="px-6 py-4 max-w-md truncate">
@@ -62,7 +62,7 @@
                         <asp:Label ID="LabelDescription" runat="server" Text='<%# Eval("RESOURCE_DESCRIPTION") %>' />
                     </ItemTemplate>
                     <EditItemTemplate>
-                        <asp:TextBox ID="TextBoxDescription" runat="server" Text='<%# Bind("RESOURCE_DESCRIPTION") %>' CssClass="w-full rounded-sm py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
+                        <asp:TextBox ID="TextBoxDescription" runat="server" Text='<%# Bind("RESOURCE_DESCRIPTION") %>' CssClass="w-full rounded py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
                     </EditItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Type" SortExpression="RESOURCE_TYPE" ItemStyle-CssClass="px-6 py-4 max-w-xs truncate">
@@ -70,7 +70,7 @@
                         <asp:Label ID="LabelType" runat="server" Text='<%# Eval("RESOURCE_TYPE") %>' />
                     </ItemTemplate>
                     <EditItemTemplate>
-                        <asp:TextBox ID="TextBoxType" runat="server" Text='<%# Bind("RESOURCE_TYPE") %>' CssClass="w-full rounded-sm py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
+                        <asp:TextBox ID="TextBoxType" runat="server" Text='<%# Bind("RESOURCE_TYPE") %>' CssClass="w-full rounded py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
                     </EditItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Actions" ItemStyle-CssClass="py-4 space-x-2 px-6 flex justify-center">

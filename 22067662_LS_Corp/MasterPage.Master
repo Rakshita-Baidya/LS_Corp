@@ -22,8 +22,8 @@
                 </div>
                 <asp:Menu ID="Menu1" runat="server"
                     CssClass="space-y-1 p-2 flex flex-col"
-                    StaticMenuItemStyle-CssClass="text-white px-4 py-2 mb-1 w-48 rounded-sm text-lg hover:bg-[#6B1F29]"
-                    StaticSelectedStyle-CssClass="bg-[#71202c] text-white px-4 py-2 mb-1 w-48 rounded-sm text-lg font-medium">
+                    StaticMenuItemStyle-CssClass="text-white px-4 py-2 mb-1 w-48 rounded text-lg hover:bg-[#6B1F29]"
+                    StaticSelectedStyle-CssClass="bg-[#71202c] text-white px-4 py-2 mb-1 w-48 rounded text-lg font-medium">
                     <Items>
                         <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Dashboard" Value="Default"></asp:MenuItem>
                         <asp:MenuItem NavigateUrl="~/Users.aspx" Text="Users" Value="Users"></asp:MenuItem>

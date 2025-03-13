@@ -7,8 +7,8 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <h2 class="mb-8 text-4xl font-bold text-[#6B1F29]">Dashboard</h2>
-    <div class="gap-6 mb-8 grid grid-cols-5">
+    <h2 class="mb-6 text-4xl font-bold text-[#6B1F29]">Dashboard</h2>
+    <div class="gap-6 mb-6 grid grid-cols-5">
         <div class="p-6 text-white rounded-lg bg-[#8E2937] shadow-lg">
             <h3 class="text-lg font-semibold">Total Users</h3>
             <asp:DropDownList runat="server" DataSourceID="SqlDataSource5" DataTextField="TotalUsers" DataValueField="TotalUsers"
@@ -41,13 +41,12 @@
         </div>
     </div>
     <div class="gap-6 mb-6 grid grid-cols-2">
-
         <div class="p-6 rounded-lg border-2 border-[#6B1F29] shadow-lg">
-            <h2 class="mb-6 text-xl font-semibold text-[#6B1F29] underline">Top Performers</h2>
-            <div class="mb-6">
-                <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True" DataSourceID="SqlDataSource4" DataTextField="PROJECT_NAME"
+            <h2 class="mb-4 text-xl font-semibold text-[#6B1F29] underline">Top Performers</h2>
+            <div class="mb-4">
+                <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True" DataSourceID="SqlDataSource8" DataTextField="PROJECT_NAME"
                     DataValueField="PROJECT_ID"
-                    CssClass="py-1 px-2 border-gray-500 border shadow-sm focus:border-[#B54555] focus:ring-[#B54555]">
+                    CssClass="py-1 px-2 border-gray-500 rounded border shadow-sm focus:border-[#B54555] focus:ring-[#B54555]">
                 </asp:DropDownList>
             </div>
             <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="USER_ID" DataSourceID="SqlDataSource2"
@@ -64,15 +63,12 @@
                     <asp:BoundField DataField="COMPLETED_TASKS" HeaderText="Tasks" SortExpression="COMPLETED_TASKS" ItemStyle-CssClass="px-4 py-4" />
                     <asp:BoundField DataField="USER_RANK" HeaderText="Rank" SortExpression="USER_RANK" ItemStyle-CssClass="px-4 py-4" />
                 </Columns>
-
                 <HeaderStyle CssClass="bg-[#F5E6E8] text-lg"></HeaderStyle>
-
                 <RowStyle CssClass="bg-white text-md text-gray-900 hover:bg-gray-50"></RowStyle>
             </asp:GridView>
-
         </div>
         <div class="p-6 rounded-lg border-2 border-[#6B1F29] shadow-lg">
-            <h2 class="mb-6 text-xl font-semibold text-[#6B1F29] underline">User Distribution by Position</h2>
+            <h2 class="mb-4 text-xl font-semibold text-[#6B1F29] underline">User Distribution by Position</h2>
             <asp:Chart ID="Chart1" runat="server" DataSourceID="SqlDataSource6"
                 CssClass="mx-auto" Width="600px" Height="225px" BackColor="#f9fafb" Palette="Chocolate">
                 <Series>
@@ -93,7 +89,7 @@
             </asp:Chart>
         </div>
         <div class="p-6 rounded-lg border-2 border-[#6B1F29] shadow-lg">
-            <h2 class="mb-6 text-xl font-semibold text-[#6B1F29] underline">Remaining Days Until Project Due</h2>
+            <h2 class="mb-4 text-xl font-semibold text-[#6B1F29] underline">Remaining Days Until Project Due</h2>
             <asp:Chart ID="ChartTimeline" runat="server" DataSourceID="SqlDataSource4" Width="750px" Height="350px" CssClass="mx-auto" BackColor="#f9fafb">
                 <Series>
                     <asp:Series Name="RemainingDays" ChartType="Line" XValueMember="PROJECT_NAME" YValueMembers="REMAINING_DAYS"
@@ -119,10 +115,10 @@
             </asp:Chart>
         </div>
         <div class="p-6 rounded-lg border-2 border-[#6B1F29] shadow-lg">
-            <h2 class="mb-6 text-xl font-semibold text-[#6B1F29] underline">Task Status by Project</h2>
-            <asp:DropDownList ID="DropDownList2" runat="server" OnSelectedIndexChanged="DropDownList2_SelectedIndexChanged" AutoPostBack="True" DataSourceID="SqlDataSource4" DataTextField="PROJECT_NAME"
+            <h2 class="mb-4 text-xl font-semibold text-[#6B1F29] underline">Task Status by Project</h2>
+            <asp:DropDownList ID="DropDownList2" runat="server" OnSelectedIndexChanged="DropDownList2_SelectedIndexChanged" AutoPostBack="True" DataSourceID="SqlDataSource8" DataTextField="PROJECT_NAME"
                 DataValueField="PROJECT_ID"
-                CssClass="py-1 px-2 mb-4 border-gray-500 border shadow-sm focus:border-[#B54555] focus:ring-[#B54555]">
+                CssClass="py-1 px-2 mb-4 border-gray-500 rounded border shadow-sm focus:border-[#B54555] focus:ring-[#B54555]">
             </asp:DropDownList>
             <asp:Chart ID="ChartTaskStatus" runat="server" DataSourceID="SqlDataSource7"
                 CssClass="mx-auto" Width="400px" Height="300px" BackColor="#f9fafb">
@@ -145,7 +141,6 @@
                 </ChartAreas>
             </asp:Chart>
         </div>
-
     </div>
 
     <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>"
@@ -176,6 +171,7 @@ GROUP BY t.TASK_STATUS">
             <asp:ControlParameter ControlID="DropDownList2" Name="ProjectID" PropertyName="SelectedValue" />
         </SelectParameters>
     </asp:SqlDataSource>
+    <asp:SqlDataSource ID="SqlDataSource8" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" SelectCommand="SELECT &quot;PROJECT_ID&quot;, &quot;PROJECT_NAME&quot; FROM &quot;PROJECTS&quot;"></asp:SqlDataSource>
 </asp:Content>
 
 

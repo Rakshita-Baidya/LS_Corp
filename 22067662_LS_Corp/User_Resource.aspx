@@ -12,28 +12,28 @@
             <div class="gap-4 p-6 grid grid-cols-1 rounded border-2 border-[#6B1F29]">
                 <div class="space-y-2">
                     <label class="text-gray-700 block text-sm font-medium">User Task Resource ID:</label>
-                    <asp:TextBox ID="USER_TASK_RESOURCE_IDTextBox" runat="server" Text='<%# Bind("USER_TASK_RESOURCE_ID") %>' CssClass="w-full rounded-sm py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
+                    <asp:TextBox ID="USER_TASK_RESOURCE_IDTextBox" runat="server" Text='<%# Bind("USER_TASK_RESOURCE_ID") %>' CssClass="w-full rounded py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
                 </div>
                 <div class="space-y-2">
                     <label class="text-gray-700 block text-sm font-medium">User:</label>
-                    <asp:DropDownList ID="DropDownListUser" runat="server" DataSourceID="SqlDataSource2" DataTextField="USER_NAME" DataValueField="USER_ID" SelectedValue='<%# Bind("USER_ID") %>' CssClass="w-full rounded-sm py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
+                    <asp:DropDownList ID="DropDownListUser" runat="server" DataSourceID="SqlDataSource2" DataTextField="USER_NAME" DataValueField="USER_ID" SelectedValue='<%# Bind("USER_ID") %>' CssClass="w-full rounded py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
                 </div>
                 <div class="space-y-2">
                     <label class="text-gray-700 block text-sm font-medium">Task:</label>
-                    <asp:DropDownList ID="DropDownListTask" runat="server" DataSourceID="SqlDataSource3" DataTextField="TASK_NAME" DataValueField="TASK_ID" SelectedValue='<%# Bind("TASK_ID") %>' CssClass="w-full rounded-sm py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
+                    <asp:DropDownList ID="DropDownListTask" runat="server" DataSourceID="SqlDataSource3" DataTextField="TASK_NAME" DataValueField="TASK_ID" SelectedValue='<%# Bind("TASK_ID") %>' CssClass="w-full rounded py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
                 </div>
                 <div class="space-y-2">
                     <label class="text-gray-700 block text-sm font-medium">Resource:</label>
-                    <asp:DropDownList ID="DropDownListResource" runat="server" DataSourceID="SqlDataSource4" DataTextField="RESOURCE_NAME" DataValueField="RESOURCE_ID" SelectedValue='<%# Bind("RESOURCE_ID") %>' CssClass="w-full rounded-sm py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
+                    <asp:DropDownList ID="DropDownListResource" runat="server" DataSourceID="SqlDataSource4" DataTextField="RESOURCE_NAME" DataValueField="RESOURCE_ID" SelectedValue='<%# Bind("RESOURCE_ID") %>' CssClass="w-full rounded py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
                 </div>
                 <div class="space-x-4 pt-4 flex">
-                    <asp:LinkButton ID="InsertButton" runat="server" CausesValidation="True" CommandName="Insert" Text="Insert" CssClass="text-white px-4 py-2 rounded-sm bg-[#8E2937] hover:bg-[#6B1F29]" />
-                    <asp:LinkButton ID="InsertCancelButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" CssClass="bg-gray-200 text-gray-700 px-4 py-2 rounded-sm hover:bg-gray-300" />
+                    <asp:LinkButton ID="InsertButton" runat="server" CausesValidation="True" CommandName="Insert" Text="Insert" CssClass="text-white px-4 py-2 rounded bg-[#8E2937] hover:bg-[#6B1F29]" />
+                    <asp:LinkButton ID="InsertCancelButton" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" CssClass="bg-gray-200 text-gray-700 px-4 py-2 rounded hover:bg-gray-300" />
                 </div>
             </div>
         </InsertItemTemplate>
         <ItemTemplate>
-            <asp:LinkButton ID="NewButton" runat="server" CausesValidation="False" CommandName="New" Text="Add Assignment" CssClass="text-white px-4 py-2 rounded-sm bg-[#8E2937] hover:bg-[#6B1F29]" />
+            <asp:LinkButton ID="NewButton" runat="server" CausesValidation="False" CommandName="New" Text="Add Assignment" CssClass="text-white px-4 py-2 rounded bg-[#8E2937] hover:bg-[#6B1F29]" />
         </ItemTemplate>
     </asp:FormView>
 
@@ -56,7 +56,7 @@
                         <asp:Label ID="LabelUserID" runat="server" Text='<%# Eval("USER_ID") %>' />
                     </ItemTemplate>
                     <EditItemTemplate>
-                        <asp:DropDownList ID="DropDownListUser" runat="server" DataSourceID="SqlDataSource2" DataTextField="USER_NAME" DataValueField="USER_ID" SelectedValue='<%# Bind("USER_ID") %>' CssClass="w-full rounded-sm py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
+                        <asp:DropDownList ID="DropDownListUser" runat="server" DataSourceID="SqlDataSource2" DataTextField="USER_NAME" DataValueField="USER_ID" SelectedValue='<%# Bind("USER_ID") %>' CssClass="w-full rounded py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
                     </EditItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Username" ItemStyle-CssClass="px-6 py-4">
@@ -69,7 +69,7 @@
                         <asp:Label ID="LabelTaskID" runat="server" Text='<%# Eval("TASK_ID") %>' />
                     </ItemTemplate>
                     <EditItemTemplate>
-                        <asp:DropDownList ID="DropDownListTask" runat="server" DataSourceID="SqlDataSource3" DataTextField="TASK_NAME" DataValueField="TASK_ID" SelectedValue='<%# Bind("TASK_ID") %>' CssClass="w-full rounded-sm py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
+                        <asp:DropDownList ID="DropDownListTask" runat="server" DataSourceID="SqlDataSource3" DataTextField="TASK_NAME" DataValueField="TASK_ID" SelectedValue='<%# Bind("TASK_ID") %>' CssClass="w-full rounded py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
                     </EditItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Task Name" ItemStyle-CssClass="px-6 py-4">
@@ -82,7 +82,7 @@
                         <asp:Label ID="LabelResourceID" runat="server" Text='<%# Eval("RESOURCE_ID") %>' />
                     </ItemTemplate>
                     <EditItemTemplate>
-                        <asp:DropDownList ID="DropDownListResource" runat="server" DataSourceID="SqlDataSource4" DataTextField="RESOURCE_NAME" DataValueField="RESOURCE_ID" SelectedValue='<%# Bind("RESOURCE_ID") %>' CssClass="w-full rounded-sm py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
+                        <asp:DropDownList ID="DropDownListResource" runat="server" DataSourceID="SqlDataSource4" DataTextField="RESOURCE_NAME" DataValueField="RESOURCE_ID" SelectedValue='<%# Bind("RESOURCE_ID") %>' CssClass="w-full rounded py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
                     </EditItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Resource Name" ItemStyle-CssClass="px-6 py-4">
