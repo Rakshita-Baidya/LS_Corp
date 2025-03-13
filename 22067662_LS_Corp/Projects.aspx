@@ -19,12 +19,16 @@
                 <div class="space-y-2">
                     <label class="text-gray-700 block text-sm font-medium">
                         Start Date:</label>
-                    <asp:TextBox ID="PROJECT_START_DATETextBox" runat="server" TextMode="Date" Text='<%# Bind("PROJECT_START_DATE") %>' CssClass="w-full rounded py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
+                    <asp:TextBox ID="PROJECT_START_DATETextBox" runat="server" TextMode="Date" Text='<%# Bind("PROJECT_START_DATE") %>' 
+                        CssClass="w-full rounded py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" 
+                        min='<%# DateTime.Today.ToString("yyyy-MM-dd") %>'/>
                 </div>
                 <div class="space-y-2">
                     <label class="text-gray-700 block text-sm font-medium">
                         Due Date:</label>
-                    <asp:TextBox ID="PROJECT_DUE_DATETextBox" runat="server" TextMode="Date" Text='<%# Bind("PROJECT_DUE_DATE") %>' CssClass="w-full rounded py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
+                    <asp:TextBox ID="PROJECT_DUE_DATETextBox" runat="server" TextMode="Date" Text='<%# Bind("PROJECT_DUE_DATE") %>' 
+                        CssClass="w-full rounded py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" 
+                        min='<%# DateTime.Today.AddDays(1).ToString("yyyy-MM-dd") %>'/>
                 </div>
                 <div class="space-y-2">
                     <label class="text-gray-700 block text-sm font-medium">
@@ -70,7 +74,9 @@
                         <asp:Label ID="LabelStartDate" runat="server" Text='<%# Eval("PROJECT_START_DATE", "{0:dd MMMM, yyyy}") %>' />
                     </ItemTemplate>
                     <EditItemTemplate>
-                        <asp:TextBox ID="TextBoxStartDate" runat="server" TextMode="Date" Text='<%# Bind("PROJECT_START_DATE", "{0:yyyy-MM-dd}") %>' CssClass="w-full rounded py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
+                        <asp:TextBox ID="TextBoxStartDate" runat="server" TextMode="Date" Text='<%# Bind("PROJECT_START_DATE", "{0:yyyy-MM-dd}") %>' 
+                            CssClass="w-full rounded py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" 
+                            min='<%# DateTime.Today.ToString("yyyy-MM-dd") %>'/>
                     </EditItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Due Date" SortExpression="PROJECT_DUE_DATE" ItemStyle-CssClass="px-6 py-4 max-w-max truncate">
@@ -78,7 +84,9 @@
                         <asp:Label ID="LabelDueDate" runat="server" Text='<%# Eval("PROJECT_DUE_DATE", "{0:dd MMMM, yyyy}") %>' />
                     </ItemTemplate>
                     <EditItemTemplate>
-                        <asp:TextBox ID="TextBoxDueDate" runat="server" TextMode="Date" Text='<%# Bind("PROJECT_DUE_DATE", "{0:yyyy-MM-dd}") %>' CssClass="w-full rounded py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
+                        <asp:TextBox ID="TextBoxDueDate" runat="server" TextMode="Date" Text='<%# Bind("PROJECT_DUE_DATE", "{0:yyyy-MM-dd}") %>' 
+                            CssClass="w-full rounded py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]"
+                            min='<%# DateTime.Today.AddDays(1).ToString("yyyy-MM-dd") %>'/>
                     </EditItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Status" SortExpression="PROJECT_STATUS" ItemStyle-CssClass="px-6 py-4 max-w-xs truncate">
@@ -140,7 +148,9 @@
              timer: 3000,
              timerProgressBar: true
          });
-     }
+         }
+
      </script>
+
 </asp:Content>
 

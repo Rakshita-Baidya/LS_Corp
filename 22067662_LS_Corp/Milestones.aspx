@@ -25,7 +25,9 @@
                 </div>
                 <div class="space-y-2">
                     <label class="text-gray-700 block text-sm font-medium">Date:</label>
-                    <asp:TextBox ID="MILESTONE_DATETextBox" runat="server" TextMode="Date" Text='<%# Bind("MILESTONE_DATE", "{0:yyyy-MM-dd}") %>' CssClass="w-full rounded py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
+                    <asp:TextBox ID="MILESTONE_DATETextBox" runat="server" TextMode="Date" Text='<%# Bind("MILESTONE_DATE", "{0:yyyy-MM-dd}") %>' 
+                        CssClass="w-full rounded py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" 
+                        min='<%# DateTime.Today.ToString("yyyy-MM-dd") %>'/>
                 </div>
                 <div class="space-y-2">
                     <label class="text-gray-700 block text-sm font-medium">Status:</label>
@@ -101,7 +103,9 @@
                         <asp:Label ID="LabelDate" runat="server" Text='<%# Eval("MILESTONE_DATE", "{0:dd MMMM, yyyy}") %>' />
                     </ItemTemplate>
                     <EditItemTemplate>
-                        <asp:TextBox ID="TextBoxDate" runat="server" TextMode="Date" Text='<%# Bind("MILESTONE_DATE", "{0:yyyy-MM-dd}") %>' CssClass="w-full rounded py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
+                        <asp:TextBox ID="TextBoxDate" runat="server" TextMode="Date" Text='<%# Bind("MILESTONE_DATE", "{0:yyyy-MM-dd}") %>' 
+                            CssClass="w-full rounded py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" 
+                            min='<%# DateTime.Today.ToString("yyyy-MM-dd") %>'/>
                     </EditItemTemplate>
 
                     <ItemStyle CssClass="px-6 py-4"></ItemStyle>

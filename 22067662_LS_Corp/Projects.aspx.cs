@@ -28,5 +28,6 @@ namespace _22067662_LS_Corp
         {
             ClientScript.RegisterStartupScript(this.GetType(), "toast", "showToast('Project deleted successfully!', 'warning');", true);
         }
+
     }
 }

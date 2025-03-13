@@ -25,7 +25,9 @@
                 </div>
                 <div class="space-y-2">
                     <label class="text-gray-700 block text-sm font-medium">Date Time:</label>
-                    <asp:TextBox ID="COMMENT_DATETIMETextBox" TextMode="DateTimeLocal" runat="server" Text='<%# Bind("COMMENT_DATETIME") %>' CssClass="w-full  rounded py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
+                    <asp:TextBox ID="COMMENT_DATETIMETextBox" TextMode="DateTimeLocal" runat="server" Text='<%# Bind("COMMENT_DATETIME") %>' 
+                        CssClass="w-full  rounded py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" 
+                        min='<%# DateTime.Today.ToString("yyyy-MM-dd") + "T00:00" %>'/>
                 </div>
                 <div class="space-y-2">
                     <label class="text-gray-700 block text-sm font-medium">User:</label>
@@ -83,7 +85,8 @@
                         <asp:Label ID="LabelDateTime" runat="server" Text='<%# Eval("COMMENT_DATETIME", "{0:dd MMMM, yyyy h:mm tt}") %>' />
                     </ItemTemplate>
                     <EditItemTemplate>
-                        <asp:TextBox ID="TextBoxDateTime" runat="server" TextMode="DateTimeLocal" Text='<%# Bind("COMMENT_DATETIME", "{0:yyyy-MM-ddTHH:mm}") %>' CssClass="w-full  rounded py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
+                        <asp:TextBox ID="TextBoxDateTime" runat="server" TextMode="DateTimeLocal" Text='<%# Bind("COMMENT_DATETIME", "{0:yyyy-MM-ddTHH:mm}") %>' 
+                            CssClass="w-full  rounded py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]"/>
                     </EditItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Task ID" SortExpression="TASK_ID" ItemStyle-CssClass="px-3 py-4 max-w-20">
