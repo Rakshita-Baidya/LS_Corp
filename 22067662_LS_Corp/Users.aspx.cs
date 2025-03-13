@@ -15,5 +15,21 @@ namespace _22067662_LS_Corp
 
         }
 
+        protected void SqlDataSource1_Inserted(object sender, SqlDataSourceStatusEventArgs e)
+        {
+            ClientScript.RegisterStartupScript(this.GetType(), "toast", "showToast('User added successfully!', 'success');", true);
+        }
+
+        protected void SqlDataSource1_Updated(object sender, SqlDataSourceStatusEventArgs e)
+        {
+            ClientScript.RegisterStartupScript(this.GetType(), "toast", "showToast('User updated successfully!', 'info');", true);
+        }
+
+        protected void SqlDataSource1_Deleted(object sender, SqlDataSourceStatusEventArgs e)
+        {
+            ClientScript.RegisterStartupScript(this.GetType(), "toast", "showToast('User deleted successfully!', 'warning');", true);
+        }
+
+
     }
 }

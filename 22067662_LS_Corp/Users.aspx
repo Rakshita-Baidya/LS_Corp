@@ -112,7 +112,10 @@
         OnSelecting="SqlDataSource1_Selecting"
         ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>"
         SelectCommand="SELECT &quot;USER_ID&quot;, &quot;USER_NAME&quot;, &quot;USER_EMAIL&quot;, &quot;USER_CONTACT&quot;, &quot;USER_POSITION&quot; FROM &quot;USERS&quot;"
-        UpdateCommand="UPDATE &quot;USERS&quot; SET &quot;USER_NAME&quot; = :USER_NAME, &quot;USER_EMAIL&quot; = :USER_EMAIL, &quot;USER_CONTACT&quot; = :USER_CONTACT, &quot;USER_POSITION&quot; = :USER_POSITION WHERE &quot;USER_ID&quot; = :USER_ID">
+        UpdateCommand="UPDATE &quot;USERS&quot; SET &quot;USER_NAME&quot; = :USER_NAME, &quot;USER_EMAIL&quot; = :USER_EMAIL, &quot;USER_CONTACT&quot; = :USER_CONTACT, &quot;USER_POSITION&quot; = :USER_POSITION WHERE &quot;USER_ID&quot; = :USER_ID"
+        OnInserted="SqlDataSource1_Inserted"
+    OnUpdated="SqlDataSource1_Updated"
+    OnDeleted="SqlDataSource1_Deleted">
         <DeleteParameters>
             <asp:Parameter Name="USER_ID" Type="Decimal" />
         </DeleteParameters>
@@ -131,4 +134,17 @@
             <asp:Parameter Name="USER_ID" Type="Decimal" />
         </UpdateParameters>
     </asp:SqlDataSource>
+    <script>
+        function showToast(message, type) {
+            Swal.fire({
+                toast: true,
+                position: 'top-end',
+                icon: type,
+                title: message,
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true
+            });
+        }
+    </script>
 </asp:Content>
