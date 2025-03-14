@@ -18,21 +18,25 @@
                     <label class="text-gray-700 block text-sm font-medium">Message:</label>
                     <asp:TextBox ID="COMMENT_MESSAGETextBox" runat="server" Text='<%# Bind("COMMENT_MESSAGE") %>' CssClass="w-full  rounded py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
                 </div>
-                <div class="space-y-2">
-                    <label class="text-gray-700 block text-sm font-medium">Task:</label>
-                    <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource2" DataTextField="TASK_NAME" DataValueField="TASK_ID" SelectedValue='<%# Bind("TASK_ID") %>' CssClass="w-full  rounded py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]">
-                    </asp:DropDownList>
-                </div>
+               <div class="space-y-2">
+                <label class="text-gray-700 block text-sm font-medium">User:</label>
+                <asp:DropDownList ID="DropDownListUser" runat="server" DataSourceID="SqlDataSource3"
+                    DataTextField="USER_NAME" DataValueField="USER_ID"
+                    SelectedValue='<%# Bind("USER_ID") %>'
+                    CssClass="w-full rounded py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]"
+                    AutoPostBack="True" OnSelectedIndexChanged="DropDownListUser_SelectedIndexChanged" />
+            </div>
+            <div class="space-y-2">
+                <label class="text-gray-700 block text-sm font-medium">Task:</label>
+                <asp:DropDownList ID="DropDownListTask" runat="server"
+                    SelectedValue='<%# Bind("TASK_ID") %>'
+                    CssClass="w-full rounded py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
+            </div>
                 <div class="space-y-2">
                     <label class="text-gray-700 block text-sm font-medium">Date Time:</label>
-                    <asp:TextBox ID="COMMENT_DATETIMETextBox" TextMode="DateTimeLocal" runat="server" Text='<%# Bind("COMMENT_DATETIME") %>' 
-                        CssClass="w-full  rounded py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" 
-                        min='<%# DateTime.Today.ToString("yyyy-MM-dd") + "T00:00" %>'/>
-                </div>
-                <div class="space-y-2">
-                    <label class="text-gray-700 block text-sm font-medium">User:</label>
-                    <asp:DropDownList ID="DropDownList2" runat="server" DataSourceID="SqlDataSource3" DataTextField="USER_NAME" DataValueField="USER_ID" SelectedValue='<%# Bind("USER_ID") %>' CssClass="w-full  rounded py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]">
-                    </asp:DropDownList>
+                    <asp:TextBox ID="COMMENT_DATETIMETextBox" TextMode="DateTimeLocal" runat="server" Text='<%# Bind("COMMENT_DATETIME") %>'
+                        CssClass="w-full  rounded py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]"
+                        min='<%# DateTime.Today.ToString("yyyy-MM-dd") + "T00:00" %>' />
                 </div>
                 <div class="space-x-4 pt-4 flex">
                     <asp:LinkButton ID="InsertButton" runat="server" CausesValidation="True" CommandName="Insert" Text="Insert" CssClass="text-white px-4 py-2 rounded bg-[#8E2937] hover:bg-[#6B1F29]" />
@@ -85,8 +89,8 @@
                         <asp:Label ID="LabelDateTime" runat="server" Text='<%# Eval("COMMENT_DATETIME", "{0:dd MMMM, yyyy h:mm tt}") %>' />
                     </ItemTemplate>
                     <EditItemTemplate>
-                        <asp:TextBox ID="TextBoxDateTime" runat="server" TextMode="DateTimeLocal" Text='<%# Bind("COMMENT_DATETIME", "{0:yyyy-MM-ddTHH:mm}") %>' 
-                            CssClass="w-full  rounded py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]"/>
+                        <asp:TextBox ID="TextBoxDateTime" runat="server" TextMode="DateTimeLocal" Text='<%# Bind("COMMENT_DATETIME", "{0:yyyy-MM-ddTHH:mm}") %>'
+                            CssClass="w-full  rounded py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
                     </EditItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Task ID" SortExpression="TASK_ID" ItemStyle-CssClass="px-3 py-4 max-w-20">
@@ -136,7 +140,7 @@
 
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" DeleteCommand="DELETE FROM &quot;COMMENTS&quot; WHERE &quot;COMMENT_ID&quot; = :COMMENT_ID"
         InsertCommand="INSERT INTO &quot;COMMENTS&quot; (&quot;COMMENT_ID&quot;, &quot;COMMENT_MESSAGE&quot;, &quot;COMMENT_DATETIME&quot;, &quot;USER_ID&quot;, &quot;TASK_ID&quot;) VALUES (:COMMENT_ID, :COMMENT_MESSAGE, :COMMENT_DATETIME, :USER_ID, :TASK_ID)"
-        ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" 
+        ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>"
         SelectCommand="SELECT &quot;COMMENT_ID&quot;, &quot;COMMENT_MESSAGE&quot;, &quot;COMMENT_DATETIME&quot;, &quot;USER_ID&quot;, &quot;TASK_ID&quot; FROM &quot;COMMENTS&quot; where (:USER_ID = -1 OR USER_ID = :USER_ID) AND (:TASK_ID = -1 OR TASK_ID = :TASK_ID)"
         UpdateCommand="UPDATE &quot;COMMENTS&quot; SET &quot;COMMENT_MESSAGE&quot; = :COMMENT_MESSAGE, &quot;COMMENT_DATETIME&quot; = :COMMENT_DATETIME, &quot;USER_ID&quot; = :USER_ID, &quot;TASK_ID&quot; = :TASK_ID WHERE &quot;COMMENT_ID&quot; = :COMMENT_ID"
         OnInserted="SqlDataSource1_Inserted"
