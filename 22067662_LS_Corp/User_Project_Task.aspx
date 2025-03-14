@@ -14,17 +14,25 @@
                     <label class="text-gray-700 block text-sm font-medium">User Project Task ID:</label>
                     <asp:TextBox ID="USER_PROJECT_TASK_IDTextBox" runat="server" Text='<%# Bind("USER_PROJECT_TASK_ID") %>' CssClass="w-full rounded py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
                 </div>
-                <div class="space-y-2">
-                    <label class="text-gray-700 block text-sm font-medium">Task:</label>
-                    <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource4" DataTextField="TASK_NAME" DataValueField="TASK_ID" SelectedValue='<%# Bind("TASK_ID") %>' CssClass="w-full rounded py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
-                </div>
+
                 <div class="space-y-2">
                     <label class="text-gray-700 block text-sm font-medium">User:</label>
-                    <asp:DropDownList ID="DropDownList2" runat="server" DataSourceID="SqlDataSource2" DataTextField="USER_NAME" DataValueField="USER_ID" SelectedValue='<%# Bind("USER_ID") %>' CssClass="w-full rounded py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
+                    <asp:DropDownList ID="DropDownList2" runat="server" DataSourceID="SqlDataSource2"
+                        DataTextField="USER_NAME" DataValueField="USER_ID"
+                        SelectedValue='<%# Bind("USER_ID") %>'
+                        CssClass="w-full rounded py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]"
+                        AutoPostBack="True" OnSelectedIndexChanged="DropDownList2_SelectedIndexChanged" />
                 </div>
                 <div class="space-y-2">
                     <label class="text-gray-700 block text-sm font-medium">Project:</label>
-                    <asp:DropDownList ID="DropDownList3" runat="server" DataSourceID="SqlDataSource3" DataTextField="PROJECT_NAME" DataValueField="PROJECT_ID" SelectedValue='<%# Bind("PROJECT_ID") %>' CssClass="w-full rounded py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
+                    <asp:DropDownList ID="DropDownList3" runat="server"
+                        DataTextField="PROJECT_NAME" DataValueField="PROJECT_ID"
+                        SelectedValue='<%# Bind("PROJECT_ID") %>'
+                        CssClass="w-full rounded py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
+                </div>
+                <div class="space-y-2">
+                    <label class="text-gray-700 block text-sm font-medium">Task:</label>
+                    <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource4" DataTextField="TASK_NAME" DataValueField="TASK_ID" SelectedValue='<%# Bind("TASK_ID") %>' CssClass="w-full rounded py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
                 </div>
                 <div class="space-x-4 pt-4 flex">
                     <asp:LinkButton ID="InsertButton" runat="server" CausesValidation="True" CommandName="Insert" Text="Insert" CssClass="text-white px-4 py-2 rounded bg-[#8E2937] hover:bg-[#6B1F29]" />
@@ -72,19 +80,7 @@
             <PagerStyle HorizontalAlign="Center" />
             <Columns>
                 <asp:BoundField DataField="USER_PROJECT_TASK_ID" HeaderText="ID" ReadOnly="True" SortExpression="USER_PROJECT_TASK_ID" ItemStyle-CssClass="px-6 py-4" />
-                <asp:TemplateField HeaderText="Task ID" SortExpression="TASK_ID" ItemStyle-CssClass="px-6 py-4">
-                    <ItemTemplate>
-                        <asp:Label ID="LabelTaskID" runat="server" Text='<%# Eval("TASK_ID") %>' />
-                    </ItemTemplate>
-                    <EditItemTemplate>
-                        <asp:DropDownList ID="DropDownListTask" runat="server" DataSourceID="SqlDataSource4" DataTextField="TASK_NAME" DataValueField="TASK_ID" SelectedValue='<%# Bind("TASK_ID") %>' CssClass="w-full rounded py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
-                    </EditItemTemplate>
-                </asp:TemplateField>
-                <asp:TemplateField HeaderText="Task Name" ItemStyle-CssClass="px-6 py-4">
-                    <ItemTemplate>
-                        <asp:DropDownList ID="DropDownListTaskName" runat="server" DataSourceID="SqlDataSource4" DataTextField="TASK_NAME" DataValueField="TASK_ID" SelectedValue='<%# Eval("TASK_ID") %>' Enabled="False" CssClass="w-full py-1 px-2 text-black bg-transparent border-none appearance-none  text-center" />
-                    </ItemTemplate>
-                </asp:TemplateField>
+
                 <asp:TemplateField HeaderText="User ID" SortExpression="USER_ID" ItemStyle-CssClass="px-6 py-4">
                     <ItemTemplate>
                         <asp:Label ID="LabelUserID" runat="server" Text='<%# Eval("USER_ID") %>' />
@@ -109,6 +105,19 @@
                 <asp:TemplateField HeaderText="Project Name" ItemStyle-CssClass="px-6 py-4">
                     <ItemTemplate>
                         <asp:DropDownList ID="DropDownListProjectName" runat="server" DataSourceID="SqlDataSource3" DataTextField="PROJECT_NAME" DataValueField="PROJECT_ID" SelectedValue='<%# Eval("PROJECT_ID") %>' Enabled="False" CssClass="w-full py-1 px-2 text-black bg-transparent border-none appearance-none text-center" />
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Task ID" SortExpression="TASK_ID" ItemStyle-CssClass="px-6 py-4">
+                    <ItemTemplate>
+                        <asp:Label ID="LabelTaskID" runat="server" Text='<%# Eval("TASK_ID") %>' />
+                    </ItemTemplate>
+                    <EditItemTemplate>
+                        <asp:DropDownList ID="DropDownListTask" runat="server" DataSourceID="SqlDataSource4" DataTextField="TASK_NAME" DataValueField="TASK_ID" SelectedValue='<%# Bind("TASK_ID") %>' CssClass="w-full rounded py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
+                    </EditItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Task Name" ItemStyle-CssClass="px-6 py-4">
+                    <ItemTemplate>
+                        <asp:DropDownList ID="DropDownListTaskName" runat="server" DataSourceID="SqlDataSource4" DataTextField="TASK_NAME" DataValueField="TASK_ID" SelectedValue='<%# Eval("TASK_ID") %>' Enabled="False" CssClass="w-full py-1 px-2 text-black bg-transparent border-none appearance-none  text-center" />
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Actions" ItemStyle-CssClass="py-4 space-x-2 px-6 flex justify-center">

@@ -16,11 +16,17 @@
                 </div>
                 <div class="space-y-2">
                     <label class="text-gray-700 block text-sm font-medium">User:</label>
-                    <asp:DropDownList ID="DropDownListUser" runat="server" DataSourceID="SqlDataSource2" DataTextField="USER_NAME" DataValueField="USER_ID" SelectedValue='<%# Bind("USER_ID") %>' CssClass="w-full rounded py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
+                    <asp:DropDownList ID="DropDownListUser" runat="server" DataSourceID="SqlDataSource2"
+                        DataTextField="USER_NAME" DataValueField="USER_ID"
+                        SelectedValue='<%# Bind("USER_ID") %>'
+                        CssClass="w-full rounded py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]"
+                        AutoPostBack="True" OnSelectedIndexChanged="DropDownListUser_SelectedIndexChanged" />
                 </div>
                 <div class="space-y-2">
                     <label class="text-gray-700 block text-sm font-medium">Task:</label>
-                    <asp:DropDownList ID="DropDownListTask" runat="server" DataSourceID="SqlDataSource3" DataTextField="TASK_NAME" DataValueField="TASK_ID" SelectedValue='<%# Bind("TASK_ID") %>' CssClass="w-full rounded py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
+                    <asp:DropDownList ID="DropDownListTask" runat="server"
+                        SelectedValue='<%# Bind("TASK_ID") %>'
+                        CssClass="w-full rounded py-1 px-2 border border-gray-500 shadow-sm focus:border-[#B54555] focus:ring-[#B54555]" />
                 </div>
                 <div class="space-y-2">
                     <label class="text-gray-700 block text-sm font-medium">Resource:</label>
@@ -133,10 +139,10 @@
         </asp:GridView>
     </div>
 
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>"
         DeleteCommand="DELETE FROM &quot;USER_TASK_RESOURCE&quot; WHERE &quot;USER_TASK_RESOURCE_ID&quot; = :USER_TASK_RESOURCE_ID"
         InsertCommand="INSERT INTO &quot;USER_TASK_RESOURCE&quot; (&quot;USER_TASK_RESOURCE_ID&quot;, &quot;USER_ID&quot;, &quot;TASK_ID&quot;, &quot;RESOURCE_ID&quot;) VALUES (:USER_TASK_RESOURCE_ID, :USER_ID, :TASK_ID, :RESOURCE_ID)"
-        ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>" 
+        ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>"
         SelectCommand="SELECT &quot;USER_TASK_RESOURCE_ID&quot;, &quot;USER_ID&quot;, &quot;TASK_ID&quot;, &quot;RESOURCE_ID&quot; FROM &quot;USER_TASK_RESOURCE&quot; where (:USER_ID = -1 OR USER_ID = :USER_ID) and (:TASK_ID = -1 OR TASK_ID = :TASK_ID) and (:RESOURCE_ID = -1 OR RESOURCE_ID = :RESOURCE_ID)"
         UpdateCommand="UPDATE &quot;USER_TASK_RESOURCE&quot; SET &quot;USER_ID&quot; = :USER_ID, &quot;TASK_ID&quot; = :TASK_ID, &quot;RESOURCE_ID&quot; = :RESOURCE_ID WHERE &quot;USER_TASK_RESOURCE_ID&quot; = :USER_TASK_RESOURCE_ID"
         OnInserted="SqlDataSource1_Inserted"
