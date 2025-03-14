@@ -49,6 +49,7 @@
     <div class="mb-6">
         <asp:DropDownList ID="DropDownList3" runat="server" AutoPostBack="True" DataSourceID="SqlDataSource2" DataTextField="PROJECT_NAME" DataValueField="PROJECT_ID" 
             CssClass="py-1 px-2 border-gray-500 rounded border shadow-sm focus:border-[#B54555] focus:ring-[#B54555]">
+               <asp:ListItem Text="All Projects" Value="" />
         </asp:DropDownList>
     </div>
     <div class="p-6 mb-8 rounded-lg border-2 border-[#6B1F29] shadow-lg">
@@ -143,7 +144,7 @@
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
         DeleteCommand="DELETE FROM &quot;MILESTONES&quot; WHERE &quot;MILESTONE_ID&quot; = :MILESTONE_ID" 
         InsertCommand="INSERT INTO &quot;MILESTONES&quot; (&quot;MILESTONE_ID&quot;, &quot;PROJECT_ID&quot;, &quot;MILESTONE_NAME&quot;, &quot;MILESTONE_DATE&quot;, &quot;MILESTONE_STATUS&quot;) VALUES (:MILESTONE_ID, :PROJECT_ID, :MILESTONE_NAME, :MILESTONE_DATE, :MILESTONE_STATUS)" ProviderName="<%$ ConnectionStrings:ConnectionString.ProviderName %>"
-        SelectCommand="SELECT &quot;MILESTONE_ID&quot;, &quot;PROJECT_ID&quot;, &quot;MILESTONE_NAME&quot;, &quot;MILESTONE_DATE&quot;, &quot;MILESTONE_STATUS&quot; FROM &quot;MILESTONES&quot; WHERE (&quot;PROJECT_ID&quot; = :PROJECT_ID)" 
+        SelectCommand="SELECT &quot;MILESTONE_ID&quot;, &quot;PROJECT_ID&quot;, &quot;MILESTONE_NAME&quot;, &quot;MILESTONE_DATE&quot;, &quot;MILESTONE_STATUS&quot; FROM &quot;MILESTONES&quot; where (:PROJECT_ID = -1 OR PROJECT_ID = :PROJECT_ID)" 
         UpdateCommand="UPDATE &quot;MILESTONES&quot; SET &quot;PROJECT_ID&quot; = :PROJECT_ID, &quot;MILESTONE_NAME&quot; = :MILESTONE_NAME, &quot;MILESTONE_DATE&quot; = :MILESTONE_DATE, &quot;MILESTONE_STATUS&quot; = :MILESTONE_STATUS WHERE &quot;MILESTONE_ID&quot; = :MILESTONE_ID"
                 OnInserted="SqlDataSource1_Inserted"
         OnUpdated="SqlDataSource1_Updated"
@@ -159,7 +160,7 @@
             <asp:Parameter Name="MILESTONE_STATUS" Type="String" />
         </InsertParameters>
         <SelectParameters>
-            <asp:ControlParameter ControlID="DropDownList3" Name="PROJECT_ID" PropertyName="SelectedValue" Type="Decimal" />
+            <asp:ControlParameter ControlID="DropDownList3" Name="PROJECT_ID" PropertyName="SelectedValue" Type="Decimal" DefaultValue="-1" />
         </SelectParameters>
         <UpdateParameters>
             <asp:Parameter Name="PROJECT_ID" Type="Decimal" />

@@ -76,7 +76,7 @@
             <Columns>
                 <asp:BoundField DataField="SUBTASK_ID" HeaderText="ID" ReadOnly="True" SortExpression="SUBTASK_ID" ItemStyle-CssClass="px-6 py-4" />
 
-                <asp:TemplateField HeaderText="Name" SortExpression="SUBTASK_NAME" ItemStyle-CssClass="px-6 py-4">
+                <asp:TemplateField HeaderText="Name" SortExpression="SUBTASK_NAME" ItemStyle-CssClass="px-6 py-4 max-w-72 truncate">
                     <ItemTemplate>
                         <asp:Label ID="LabelName" runat="server" Text='<%# Eval("SUBTASK_NAME") %>' />
                     </ItemTemplate>

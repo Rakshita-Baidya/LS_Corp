@@ -7,7 +7,14 @@ namespace _22067662_LS_Corp
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!IsPostBack)
+            {
+                DropDownList3.DataSourceID = "SqlDataSource2";
+                DropDownList3.DataTextField = "PROJECT_NAME";
+                DropDownList3.DataValueField = "PROJECT_ID";
+                DropDownList3.DataBind();
+                DropDownList3.Items.Insert(0, new ListItem("All Projects", "-1"));
+            }
         }
 
         protected void SqlDataSource2_Selecting(object sender, SqlDataSourceSelectingEventArgs e)
